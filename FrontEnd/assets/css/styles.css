@@ -65,7 +65,7 @@ body {
 }
 #menu ul{
     line-height: 85px;
-    width: 60%;
+    width: auto;
     float: right;
 }
 #menu ul li{
@@ -112,7 +112,7 @@ body {
     background: #F0D200;
     display: block;
     padding: 10px;
-    width: 120px;
+    width: 140px;
     height: 30px;
     margin: 0px auto;
     font-size: 16px;
@@ -225,8 +225,8 @@ textarea{
 }
 
 .radiobuttons{
-    margin-top: 30px;
-    margin-bottom: 30px;
+    margin-top: -10px;
+    margin-bottom: 5px;
     float: center;
     
 }
@@ -360,12 +360,9 @@ Desde la altura 0px hasta 1370px h*/
     .center{
         width: 95%;
     }
-    #menu ul {
-        width: auto;
-    }    
 }
 
-@media (max-width:900px){
+@media (max-width:977px){
     #body{
         width: auto;
     }
