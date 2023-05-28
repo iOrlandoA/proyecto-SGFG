@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import '../assets/css/styles.css';
+import '../assets/css/App.css';
 
 
 
@@ -44,35 +44,35 @@ class BillMacker extends Component{
         const areas= ['Transporte', 'Alimentos' ,'Animal'];
 
         return(
-            <div class="center">
+            <div className="center">
                 <section id="content">
                     
-                    <h1 class="subheader">Factura</h1>
-                    <form class="mid-form">
+                    <h1 className="subheader">Factura</h1>
+                    <form className="mid-form">
 
-                        <div class="form-group radiobuttons">
+                        <div className="form-group radiobuttons">
                             <input type="radio" name="typeTransaction" value="credit" checked /> Credito 
                             <input type="radio" name="typeTransaction" value="debit"/> Debito
                         </div>
                         
 
-                        <div class="form-group">
+                        <div className="form-group">
                             <label for="name">Nombre</label>
                             <input type="text" name="name"/>
                         </div>
 
                         
-                        <div class="form-group">
+                        <div className="form-group">
                             <label for="quantity">Cantidad</label>
                             <input type="number" name="quantity"/>
                         </div>
 
-                        <div class="form-group">
+                        <div className="form-group">
                             <label for="price">Precio</label>
                             <input type="number" name="price" placeholder="₡"/>
                         </div>
 
-                        <div class="form-group select">
+                        <div className="form-group select">
                             
                             <select value = {this.state.areaTransaction} name="areaTransaction" onChange={this.handleAreaChange} >
                                 <option value="">Seleccione una opción</option>
@@ -83,14 +83,14 @@ class BillMacker extends Component{
                             </select>
                         </div>
                         
-                        <div class="form-group">
+                        <div className="form-group">
                             
                             <label for="description">Descripcion</label>
                             <textarea name="description"></textarea>
 
                         </div>
 
-                        <div class="form-group">
+                        <div className="form-group">
                             <label for="dateCreated">Fecha Emision</label>
                             <input
                                 id="dateCreated"
@@ -101,7 +101,7 @@ class BillMacker extends Component{
             
                         </div>
 
-                        <div class="form-group">
+                        <div className="form-group">
                             <label for="dateExpiration">Fecha de Pago Estimada</label>
                             <input
                                 id="dateExpiration"
@@ -112,8 +112,8 @@ class BillMacker extends Component{
             
                         </div>
 
-                        <div class="clearfix"></div>
-                        <input type="submit" value="Enviar" class="btn btn-success"/>
+                        <div className="clearfix"></div>
+                        <input type="submit" value="Enviar" className="btn btn-success"/>
 
 
                     </form>
