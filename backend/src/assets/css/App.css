@@ -21,6 +21,30 @@ body {
   margin: 0px auto;
 }
 
+
+table{
+  float: left;
+  margin-top: 50px;
+  caption-side: bottom;
+  margin-left: auto;
+  margin-right: auto;
+  border-collapse: collapse;
+  text-align: left;
+}
+th{
+  background-color: black;
+  color: whitesmoke;
+}
+
+td,th{
+  border: 2px solid black;
+  padding-left: 10px;
+  padding-right: 10px;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  
+}
+
 #logo{
   width: 30%;
   font-size: 40px;
@@ -39,16 +63,7 @@ body {
   
   
 }
-/* Como Rotar un objeto
-@keyframes rotation {
-  from{
-      transform: rotate(0deg);
-  }
-  to{
-      transform: rotate(360deg);
-  }
-}
-*/
+
 #brand{
   display: block;
   margin: 0px;
@@ -210,6 +225,24 @@ input[type="text"],input[type="number"],input[type="date"],textarea{
   transition: 300ms all;
 }
 
+.bill-list{
+  display: inline-block; 
+}
+.bill-list input[type="date"]{
+  float: center;
+  width: 150px;
+  min-height: 30px;
+  padding: 3px;
+  margin-bottom: 5px;
+  transition: 300ms all;  
+}
+.bill-list label{
+  text-align: auto;
+  padding-right: 10%;
+  padding-left: 10%;
+}
+
+
 input[type="number"]{
   appearance: textfield !important;
   margin: 0;
@@ -259,6 +292,34 @@ input[type="text"]:focus, textarea:focus{
   padding: 0px;
 }
 
+
+.subheader{
+  font-size: 38px;
+  border-bottom: 1px solid #eee;
+  padding-bottom: 10px;
+}
+
+
+.mid-form{
+  width: 50%;
+  margin: 0px auto;
+}
+.mid-form label{
+  float: left;
+  display: block;
+  text-align: left;
+  margin-top: 10px;
+  margin-bottom: 5px;
+  font-size: 17px;
+
+}
+
+
+
+
+
+
+/*
 .article-item{
   width: 100%;
   border-bottom: 1px solid #eee;
@@ -305,22 +366,10 @@ input[type="text"]:focus, textarea:focus{
   text-decoration: underline;
 }
 
-.subheader{
-  font-size: 38px;
-  border-bottom: 1px solid #eee;
-  padding-bottom: 10px;
-}
-
 .article-detail .image-wrap {
   float: none;
   width: 100%;
   height: 250px;
-}
-
-
-.article-detail .image-wrap img {
-  width: 100%;
-  height: auto;
 }
 
 .article-detail .subheader{
@@ -329,20 +378,13 @@ input[type="text"]:focus, textarea:focus{
   border: none;
 }
 
-.mid-form{
-  width: 50%;
-  margin: 0px auto;
-}
-.mid-form label{
-  float: left;
-  display: block;
-  text-align: left;
-  margin-top: 10px;
-  margin-bottom: 5px;
-  font-size: 17px;
-
+.article-detail .image-wrap img {
+  width: 100%;
+  height: auto;
 }
 
+
+*/
 
 
 /*RESPONSIVE
@@ -359,6 +401,16 @@ Desde la altura 0px hasta 1370px h*/
 @media (max-width:1220px){
   .center{
       width: 95%;
+  }
+  #sidebar{
+    float: none;
+    width: 60%;
+    margin: 0px auto;
+    margin-bottom: 50px;
+  }
+  #content{
+    float: none;
+    width: 100%;
   }
 }
 
@@ -386,17 +438,9 @@ Desde la altura 0px hasta 1370px h*/
       
   }
 
-  #content{
-      float: none;
-      width: 100%;
-  }
+  
 
-  #sidebar{
-      float: none;
-      width: 60%;
-      margin: 0px auto;
-      margin-bottom: 50px;
-  }
+  
 
   #slider h1{
       padding-top: 115px;
@@ -410,7 +454,7 @@ Desde la altura 0px hasta 1370px h*/
 
 }
 
-@media (max-width:470px){
+@media (max-width:625px){
   #header{
       min-height: 130px;
       overflow: hidden;

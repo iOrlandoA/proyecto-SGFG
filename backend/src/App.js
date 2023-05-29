@@ -4,7 +4,9 @@ import Header from './components/BasePageComponents/Header';
 import Slider from './components/BasePageComponents/Slider';
 import SideBar from './components/BasePageComponents/SideBar';
 import Footer from './components/BasePageComponents/Footer';
-import Center from './components/BasePageComponents/Center';
+import Center from './components/Center';
+
+
 function App() {
 
   return (

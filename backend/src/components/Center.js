@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
-import BillMacker from '../BillMacker';
+import BillMacker from './MenuComponents/BillMacker';
+import BillList from './MenuComponents/BillList';
 // Componente Base en el cual Cargar HTML 
 class Center extends Component{
     render(){
@@ -7,7 +8,8 @@ class Center extends Component{
 
         return(
             
-            <BillMacker/>
+            //<BillMacker/>
+            <BillList/>
 
         );
 
