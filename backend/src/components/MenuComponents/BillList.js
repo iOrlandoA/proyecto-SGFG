@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-
+import BillOnList from '../FunctionalComponents/BillOnList';
 
 // Componente encargado de crear la Lista de Facturas
 
@@ -50,16 +50,11 @@ class BillList extends Component{
         try {
             return this.state.bills.map((bill, i) => {
               return (
-                <tr className='table-rode' key={i}>
-                  <td>{bill.facturaId}</td>
-                  <td>{bill.type}</td>
-                  <td>{bill.name}</td>
-                  <td>{bill.price}</td>
-                  <td>{bill.areaTransaction}</td>
-                  <td>{bill.dateCreated}</td>
-                  <td>{bill.dateExpiration}</td>
-                  <td>{bill.description}</td>
-                </tr>
+                //Llama al componente que genera cada fila (Manda Key y Factura)
+                <BillOnList 
+                    key={i}
+                    bill= {bill}
+                />
               );
             });
           } catch (error) {
@@ -119,8 +114,10 @@ class BillList extends Component{
                         <th>Fecha Expiración </th>
                         <th>Descripción</th>
                     </tr>
-                
+                    
+                    {/*Aqui se llama al Metodo que Genera la Lista*/}
                     {this.generateList()}
+
                 </table>
                 
                 

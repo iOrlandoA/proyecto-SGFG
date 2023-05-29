@@ -32,7 +32,7 @@ function App() {
 
         {/*Aquí se genera el cuadrante del lado derecho Slider para buscar facturas*/}
         <SideBar/> 
-        <div class="clearfix"></div> {/*Divide la parte de arriba con el Footer*/}
+        <div className="clearfix"></div> {/*Divide la parte de arriba con el Footer*/}
 
       </div>
 

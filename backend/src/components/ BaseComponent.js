@@ -4,7 +4,10 @@ class BaseComponent extends Component{
     render(){
         return(
             <div id='content' >
+               
             </div>
+
+
         );
     }
 }
