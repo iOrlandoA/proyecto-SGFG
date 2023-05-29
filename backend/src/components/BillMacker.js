@@ -11,35 +11,51 @@ class BillMacker extends Component{
         this.state = {
             areaTransaction : '',
             dateCreated : '',
-            dateExpiration : '',
-            
+            dateExpiration : '', 
+            bill : {
+                name : '',
+                price : 0,
+                areaTransaction : '',
+                dateCreated : '',
+                dateExpiration : '', 
+            }
         };
-        
-        
-
-      }
+    }
 
     
-    handleAreaChange = (event) => {
 
+    // Cambia cuando se selecciona una Area Nueva
+    handleAreaChange = (event) => {
         this.setState({ areaTransaction: event.target.value });
         console.log(this.state.areaTransaction); 
     }
-
+    // Cambia cuando se selecciona una Fecha Creacion Nueva
     handleDateCreatedChange = (event) => {
         this.setState({ dateCreated: event.target.value });
         console.log(this.state.dateCreated); 
     }
-    
+    // Cambia cuando se selecciona una Fecha Expiracion Nueva
     handleDateExpirationChange = (event) => {
         this.setState({ dateExpiration: event.target.value });
         console.log(this.state.dateExpiration); 
     }
     
+
+    //Envia los datos a la API
+    send =() =>{
+        
+    }
+    
+
+    // Genera un mensaje confirmación Datos de la Factura
+    confirm = () =>{
+        this.bill={
+            
+        }
+    }
+
     
     render(){
-
-      
 
         const areas= ['Transporte', 'Alimentos' ,'Animal'];
 
@@ -61,11 +77,6 @@ class BillMacker extends Component{
                             <input type="text" name="name"/>
                         </div>
 
-                        
-                        <div className="form-group">
-                            <label for="quantity">Cantidad</label>
-                            <input type="number" name="quantity"/>
-                        </div>
 
                         <div className="form-group">
                             <label for="price">Precio</label>
@@ -113,7 +124,7 @@ class BillMacker extends Component{
                         </div>
 
                         <div className="clearfix"></div>
-                        <input type="submit" value="Enviar" className="btn btn-success"/>
+                        <input type="button" value="Enviar" className="btn btn-success" onClick={this.confirm}/>
 
 
                     </form>
