@@ -1,9 +1,9 @@
 import React,{Component} from "react";
 import {BrowserRouter, Route, Routes} from "react-router-dom";
 
-import NotFound from "./components/BasePageComponents/NotFound";
-import BillMacker from "./components/MenuComponents/BillMacker";
-import BillList from "./components/MenuComponents/BillList";
+import NotFound from "./BasePageComponents/NotFound";
+import BillMacker from "./MenuComponents/BillMacker";
+import BillList from "./MenuComponents/BillList";
 
 
 // Rutas para la navegación    (Orlando)
