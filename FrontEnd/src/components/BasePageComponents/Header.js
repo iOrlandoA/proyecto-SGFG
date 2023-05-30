@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import logo from '../../assets/images/logo.svg';
 
-// Componente donde se genera el Header
+// Componente donde se genera el Header (Orlando)
 class Header extends Component{
     render(){
         return(

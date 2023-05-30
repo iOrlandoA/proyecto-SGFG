@@ -4,8 +4,7 @@ import Header from './components/BasePageComponents/Header';
 import Slider from './components/BasePageComponents/Slider';
 import SideBar from './components/BasePageComponents/SideBar';
 import Footer from './components/BasePageComponents/Footer';
-import Center from './components/Center';
-
+import Router from './components/Router';
 
 function App() {
 
@@ -23,8 +22,9 @@ function App() {
       <div className='center'>
         <section id='content'>
           <section className='components'>
+            
             {/*Aquí se cargan los componentes funcionales*/}
-            <Center/>   
+            <Router /> 
 
           </section>
         </section>

@@ -1,5 +1,7 @@
 import React, {Component} from 'react';
-// Componente Encargado de generar un elemento en la lista
+
+// Componente Encargado de generar un elemento en la lista (Orlando)
+
 class BillOnList extends Component{
     
     //Construye el objeto factura con los props

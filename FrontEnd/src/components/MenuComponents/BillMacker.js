@@ -1,5 +1,7 @@
 import React, {Component} from 'react';
 
+// Formulario con los campos para crear una factura (Orlando)
+
 class BillMacker extends Component{
 
     constructor(props) {

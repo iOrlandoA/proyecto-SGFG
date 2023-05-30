@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import BillOnList from '../FunctionalComponents/BillOnList';
 
-// Componente encargado de crear la Lista de Facturas
+// Componente encargado de crear la Lista de Facturas  (Orlando)
 
 
 class BillList extends Component{

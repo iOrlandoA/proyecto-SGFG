@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 
-// Componente donde se genera el Slider
+// Componente donde se genera el Slider (Orlando)
 class Slider extends Component{
     render(){
         return(

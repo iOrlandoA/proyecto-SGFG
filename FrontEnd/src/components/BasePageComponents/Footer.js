@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 
-// Componente donde se genera el Footer
+// Componente donde se genera el Footer (Orlando)
 const Footer = ()=>{
     return(
         <footer id="footer">

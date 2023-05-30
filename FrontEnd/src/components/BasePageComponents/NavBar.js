@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-// Componente Base en el cual Cargar HTML 
+// Componente Base en el cual Cargar HTML (Orlando)
 class NavBar extends Component{
     render(){
         return(

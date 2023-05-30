@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 
-// Componente donde se genera el SideBar
+// Componente donde se genera el SideBar (Orlando)
 class SideBar extends Component{
     render(){
         return(
