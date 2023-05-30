@@ -1,13 +1,12 @@
 import React from 'react';
 import './assets/css/App.css';
-import BasePage from './components/BasePage';
-
+import MyRouter from './components/MyRouter';
 function App() {
 
   return (
     <div className="App">
       
-      <BasePage/>   
+      <MyRouter/>   
 
     </div>
     

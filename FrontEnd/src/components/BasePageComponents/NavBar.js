@@ -1,30 +1,35 @@
 import React, {Component} from 'react';
-// Componente Base en el cual Cargar HTML (Orlando)
+import {NavLink} from 'react-router-dom';
+
+// Componente en la cual se encuentra la Barra de Navegación del Menu Principal (Orlando)
 class NavBar extends Component{
     render(){
         return(
            
             <nav id="menu">
+
+
+
                  {/* Menu Navegación */}
                 <ul>
                     <li>
-                        <a href="/">Inicio</a>
+                        <NavLink to="/home">Inicio</NavLink>
                     </li>
 
                     <li>
-                        <a href="#">Libro de Bancos</a>
+                        <NavLink to="#">Libro de Bancos</NavLink>
                     </li>
 
                     <li>
-                        <a href="/crear-facturas">Crear Factura</a>
+                        <NavLink to="/crear-facturas">Crear Factura</NavLink>
                     </li>
 
                     <li>
-                        <a href="/lista-facturas">Lista Facturas</a>
+                        <NavLink to="/lista-facturas">Lista Facturas</NavLink>
                     </li>
                     
                     <li>
-                        <a href="#">Menu Reportes</a>
+                        <NavLink to="#">Menu Reportes</NavLink>
                     </li>
 
                 </ul>
