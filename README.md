@@ -8,9 +8,12 @@ nvm --version
 nvm install node
 
 
-Instalar las librerias Express (Parte FrontEnd)
+Instalar las librerias Express| RouterDom (Parte FrontEnd)
 
 npm init -y
 npm install express
+
+npm install --save react-router-dom
+
 
 
