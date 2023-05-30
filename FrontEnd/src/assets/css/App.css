@@ -182,6 +182,7 @@ td,th{
   background: #f7f7f7;
   padding: 15px;
   margin-top: 30px;
+  border-radius: 10px;
 
 }
 
@@ -398,18 +399,23 @@ input[type="text"]:focus, textarea:focus{
 /*RESPONSIVE
 Desde la altura 0px hasta 1370px h*/
 
+@media (max-width:1605px){
+
+  #sidebar{
+    float: right;
+    margin-left: 30px;
+    margin-right: -120px;
+  }
+}
+
+
+
 @media (max-width:1370px){
 
   .center{
       width: 85%;       
   }
-}
 
-
-@media (max-width:1220px){
-  .center{
-      width: 95%;
-  }
   #sidebar{
     float: none;
     width: 60%;
@@ -420,6 +426,16 @@ Desde la altura 0px hasta 1370px h*/
     float: none;
     width: 100%;
   }
+}
+
+
+
+@media (max-width:1220px){
+  .center{
+      width: 95%;
+  }
+  
+ 
 }
 
 @media (max-width:977px){

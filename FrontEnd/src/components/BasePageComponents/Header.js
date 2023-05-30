@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 import logo from '../../assets/images/logo.svg';
-
+import NavBar from './NavBar';
 // Componente donde se genera el Header (Orlando)
 class Header extends Component{
     render(){
@@ -15,32 +15,7 @@ class Header extends Component{
                             
                         </span>
                     </div>
-
-                    {/* Menu Navegación */}
-                    <nav id="menu">
-                        <ul>
-                            <li>
-                                <a href="home.html">Inicio</a>
-                            </li>
-
-                            <li>
-                                <a href="bankBook.html">Libro de Bancos</a>
-                            </li>
-
-                            <li>
-                                <a href="billForm.html">Crear Factura</a>
-                            </li>
-
-                            <li>
-                                <a href="#">Lista Facturas</a>
-                            </li>
-                            
-                            <li>
-                                <a href="#">Menu Reportes</a>
-                            </li>
-
-                        </ul>
-                    </nav>
+                    <NavBar/>
                     {/* Limpiar Flotados */}
                     <div className="clearfix"></div>
                 </div>

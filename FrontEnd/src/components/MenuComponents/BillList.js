@@ -87,7 +87,7 @@ class BillList extends Component{
 
     render(){
         return(
-            <div id='bill-list' >
+            <div id='content' className='center'>
            
                 <h2 className='subheader'> Lista de Facturas </h2>
 
@@ -130,6 +130,7 @@ class BillList extends Component{
                 
                 
             </div>
+            
             
         );
     }

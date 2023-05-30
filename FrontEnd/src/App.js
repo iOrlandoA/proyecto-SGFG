@@ -4,7 +4,7 @@ import Header from './components/BasePageComponents/Header';
 import Slider from './components/BasePageComponents/Slider';
 import SideBar from './components/BasePageComponents/SideBar';
 import Footer from './components/BasePageComponents/Footer';
-import Router from './components/Router';
+import MyRouter from './MyRouter';
 
 function App() {
 
@@ -24,7 +24,7 @@ function App() {
           <section className='components'>
             
             {/*Aquí se cargan los componentes funcionales*/}
-            <Router /> 
+            <MyRouter /> 
 
           </section>
         </section>

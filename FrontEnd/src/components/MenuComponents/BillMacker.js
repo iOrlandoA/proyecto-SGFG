@@ -4,20 +4,18 @@ import React, {Component} from 'react';
 
 class BillMacker extends Component{
 
-    constructor(props) {
-        super(props);
-        this.state = {
-            bill : {
-                type: 'credit',
-                name : '',
-                price : 0,
-                areaTransaction : '',
-                description : '',
-                dateCreated : '',
-                dateExpiration : '', 
-            }
-        };
-    }
+
+    state = {
+        bill : {
+            type: 'credit',
+            name : '',
+            price : 0,
+            areaTransaction : '',
+            description : '',
+            dateCreated : '',
+            dateExpiration : '', 
+        }
+    };
 
 
      // Cambia cuando se cambia el nombre
@@ -116,13 +114,13 @@ class BillMacker extends Component{
                         
 
                         <div className="form-group">
-                            <label for="name">Nombre</label>
+                            <label>Nombre</label>
                             <input type="text" name="name" onChange={this.handleNameChange}/>
                         </div>
 
 
                         <div className="form-group">
-                            <label for="price">Precio</label>
+                            <label>Precio</label>
                             <input type="number" name="price" placeholder="₡" onChange={this.handlePriceChange}/>
                         </div>
 
@@ -139,13 +137,13 @@ class BillMacker extends Component{
                         
                         <div className="form-group">
                             
-                            <label for="description">Descripcion</label>
+                            <label>Descripcion</label>
                             <textarea name="description" onChange={this.handleDescriptionChange} ></textarea>
 
                         </div>
 
                         <div className="form-group">
-                            <label for="dateCreated">Fecha Emision</label>
+                            <label>Fecha Emision</label>
                             <input
                                 id="dateCreated"
                                 type="date"
@@ -156,7 +154,7 @@ class BillMacker extends Component{
                         </div>
 
                         <div className="form-group">
-                            <label for="dateExpiration">Fecha de Pago Estimada</label>
+                            <label>Fecha de Pago Estimada</label>
                             <input
                                 id="dateExpiration"
                                 type="date"
