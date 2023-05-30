@@ -15,9 +15,9 @@ class BillList extends Component{
                 name : 'Orlando',
                 price : 10000,
                 areaTransaction : 'Transporte',
-                description:'Vacio',
-                dateCreated : '27-8-2019',
-                dateExpiration : '27-8-2019', 
+                description:'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industrys standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.',
+                dateCreated : '2022-05-09',
+                dateExpiration : '2023-06-09', 
             },
             {
                 facturaId: 2,
@@ -25,9 +25,9 @@ class BillList extends Component{
                 name : 'Ale',
                 price : 2000000,
                 areaTransaction : 'Animales',
-                description:'Vacio',
-                dateCreated : '27-8-2019',
-                dateExpiration : '27-8-2019', 
+                description:'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industrys standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.',
+                dateCreated : '2023-05-09',
+                dateExpiration : '2024-05-06', 
             },
             {
                 facturaId: 3,
@@ -35,9 +35,9 @@ class BillList extends Component{
                 name : 'ChantoNix',
                 price : 40000,
                 areaTransaction : 'Alimentos',
-                description:'Vacio',
-                dateCreated : '27-8-2019',
-                dateExpiration : '27-8-2019', 
+                description:'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industrys standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.',
+                dateCreated : '2023-05-09',
+                dateExpiration : '2021-07-07', 
             }
 
         ],
@@ -45,15 +45,25 @@ class BillList extends Component{
         dateEnd : ''
 
     }
+
+    
+    listChange= (datos) =>{
+        console.log(datos);
+    }
+    
+
+
     //Genera la lista a mostrar (Aprueba de Fallos)
     generateList=() =>{
+        
         try {
             return this.state.bills.map((bill, i) => {
               return (
                 //Llama al componente que genera cada fila (Manda Key y Factura)
                 <BillOnList 
-                    key={i}
+                    key= {i}
                     bill= {bill}
+                    listChange= {this.listChange}
                 />
               );
             });
@@ -64,16 +74,13 @@ class BillList extends Component{
 
     // Cambia cuando se selecciona una Fecha Inicio Nueva
     handleDateStartChange = (event) => {
-        const {bill}=this.state;
-        bill.dateExpiration = event.target.value;
-        this.setState({bill});
+        this.setState({dateStart : event.target.value});
     }
 
     // Cambia cuando se selecciona una Fecha Fin Nueva
     handleDateEndChange = (event) => {
-        const {bill}=this.state;
-        bill.dateCreated = event.target.value;
-        this.setState({bill});
+        
+        this.setState({dateEnd:event.target.value});
         
     }
     
@@ -86,7 +93,7 @@ class BillList extends Component{
 
                 {/*Se muestran inputs de Fechas*/}
                 <div className="bill-list">
-                    <label for="dateStart">Fecha Inicio</label>
+                    <label>Fecha Inicio</label>
                     <input
                         type="date" 
                         value={this.state.dateStart}
@@ -95,7 +102,7 @@ class BillList extends Component{
                 </div>
             
                 <div  className="bill-list">
-                    <label for="dateEnd">Fecha Fin</label>
+                    <label>Fecha Fin</label>
                     <input 
                         type="date"
                         value={this.state.dateEnd}
@@ -104,17 +111,18 @@ class BillList extends Component{
                 </div>
                 {/*Parte de Titulos de la Tabla*/}      
                 <table id="table" className='bill-list'>
-                    <tr>
-                        <th>ID Factura</th>
-                        <th>Tipo Transacion</th>
-                        <th>Nombre </th>
-                        <th>Precio</th>
-                        <th>Area </th>
-                        <th>Fecha Creación</th>
-                        <th>Fecha Expiración </th>
-                        <th>Descripción</th>
-                    </tr>
-                    
+                    <thead>
+                        <tr>
+                            <th>ID Factura</th>
+                            <th>Tipo Transacion</th>
+                            <th>Nombre </th>
+                            <th>Precio</th>
+                            <th>Area </th>
+                            <th>Fecha Creación</th>
+                            <th>Fecha Expiración </th>
+                            <th>Descripción</th>
+                        </tr>
+                    </thead>
                     {/*Aqui se llama al Metodo que Genera la Lista*/}
                     {this.generateList()}
 

@@ -43,6 +43,14 @@ td,th{
   padding-top: 10px;
   padding-bottom: 10px;
   
+  
+}
+.descriptionCell{
+  max-width: 250px;
+  max-height: 75px;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  
 }
 
 #logo{
