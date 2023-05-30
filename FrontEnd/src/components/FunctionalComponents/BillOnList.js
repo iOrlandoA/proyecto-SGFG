@@ -21,11 +21,6 @@ class BillOnList extends Component{
     }
     
 
-    hideDescription= () =>{
-        var div = document.getElementById("description");
-        
-    }
-
     
     render(){
         return(    
