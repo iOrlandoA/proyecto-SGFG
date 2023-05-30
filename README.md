@@ -1,4 +1,4 @@
-# proyecto-SGFG
+# Proyecto-SGFG
 Para que el proyecto sea instalado perfectamente se debe instalar node.
 
     curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.0/install.sh | bash
