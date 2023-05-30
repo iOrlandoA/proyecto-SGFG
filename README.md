@@ -5,7 +5,11 @@ Para que el proyecto sea instalado perfectamente se debe instalar node.
 
     nvm --version
 
+
+Instalar | Actualizar el Node y npm
     nvm install node
+    
+    npm install -g npm
 
 
 Instalar Librerias (Parte FrontEnd)
