@@ -15,6 +15,20 @@ Instalar | Actualizar el Node y npm
 Instalar Librerias (Parte FrontEnd)
 
     npm init 
+    
+ Instalar Yarn para los Packetes
+ 
+    npm install -g yarn
+ 
+ 
+ Instalar TODO 
+ 
+    yarn 
+ 
+ 
+
+
+* Ya no hace falta si se Instalo con Yarn *
 
 Opcional Nodemon es para actualizar los cambios
     
