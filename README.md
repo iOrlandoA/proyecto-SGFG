@@ -25,24 +25,3 @@ Instalar Librerias (Parte FrontEnd)
  
     yarn 
  
- 
-
-
-* Ya no hace falta si se Instalo con Yarn *
-
-Opcional Nodemon es para actualizar los cambios
-    
-    npm install nodemon
-    
-Conexión con API por CORS
-
-    npm install cors
-Simplificador de Enrutamiento con el API
-
-    npm install express
-Funcionalidad de la Barra de Navegación
-
-    npm install --save react-router-dom
-
-
-
