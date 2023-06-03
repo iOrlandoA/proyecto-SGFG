@@ -4,6 +4,7 @@ import Slider from '../BasePageComponents/Slider';
 import axios from 'axios';
 import UseApi from '../FunctionalComponents/UseApi';
 import { NavLink } from 'react-router-dom';
+import BtnConfirm from '../FunctionalComponents/BtnConfirm';
 
 
 
@@ -113,29 +114,26 @@ class BillMacker extends Component{
 
     //Envia los datos a la API
     send =() =>{
+        if (this.state.name === '' || this.state.price === 0 || this.state.area === '' || this.state.dateCreated === '' || this.state.dateExpired === '' || this.state.voucher === 0) {
+            if(this.state.name === ''){} 
+            if(this.state.price === 0 ){}
+            if(this.state.area === '') {}
+            if(this.state.date_created === ''){} 
+            if(this.state.date_expired === ''){} 
+            if(this.state.voucher === 0){} 
+        }else{
+            <BtnConfirm
+                object={this.state.bill}
+                objectType="bills"
+                typeConfirm="save"
 
-        axios
-            .post(`${this.apiUrl}/bills`, this.state.bill,{
-                headers: {
-                    'Accept': 'application/json', 
-                }
-            })
-            .then()
-            .catch((err) => {
-                console.log(err);
-            });
+            />
+        }
+        
+        
+        
     }
     
-
-    // Genera un mensaje confirmación Datos de la Factura
-    confirm = () =>{
-        
-        const confirmed = window.confirm('¿Estás seguro que deseas guardar está Factura?');
-        
-        this.send();
-
-    }
-
     
     render(){
 
@@ -212,7 +210,8 @@ class BillMacker extends Component{
                         </div>
 
                         <div className="clearfix"></div>
-                        <input type="button" value="Guardar" className="btn btn-success" onClick={this.confirm}/>  
+                        {}
+                        <input type="button" value="Guardar" className="btn btn-success" onClick={this.send}/>  
                         <NavLink to="/home" className="btn btn-cancel"  >Cancelar</NavLink> 
                         
                         
