@@ -2,7 +2,6 @@ import React, {Component} from 'react';
 import SideBar from '../BasePageComponents/SideBar';
 import Slider from '../BasePageComponents/Slider';
 import axios from 'axios';
-import UseApi from '../FunctionalComponents/UseApi';
 import { NavLink } from 'react-router-dom';
 import BtnConfirm from '../FunctionalComponents/BtnConfirm';
 
@@ -13,7 +12,7 @@ import BtnConfirm from '../FunctionalComponents/BtnConfirm';
 class BillMacker extends Component{
    
     apiUrl= "http://localhost:3000/api";
-       
+ 
     state = {
         bill : {
                
@@ -25,7 +24,8 @@ class BillMacker extends Component{
             date_expired : '', 
             voucher: 0
         },
-        areas: {}
+        areas: {},
+        goSend: false
         
         
     };
@@ -84,13 +84,31 @@ class BillMacker extends Component{
         this.setState({bill});
     }
 
-   
-   
+
+    //Envia los datos a la API
+    send =()=>{
+        if (this.state.bill.name === "" || this.state.bill.price === 0 || this.state.bill.area === "" || this.state.bill.dateCreated === "" ||  this.state.bill.voucher === 0) {
+            if(this.bill.state.name === ''){} 
+            if(this.bill.state.price === 0 ){}
+            if(this.bill.state.area === '') {}
+            if(this.bill.state.date_created === ''){} 
+            if(this.bill.state.voucher === 0){} 
+
+        }else{
+            
+            console.log("Entro en false");
+            this.setState({goSend:true});
+            
+        }   
+        
+    }
         
 
-
+    //Si se monto el Componentes
     componentDidMount = async()=>{
-      
+
+        this.setState({goSend:false});
+        
         axios.get(`${this.apiUrl}/areas`, {
             headers: {
                 'Accept': 'application/json', 
@@ -110,34 +128,11 @@ class BillMacker extends Component{
        
     }
 
-    
+   
 
-    //Envia los datos a la API
-    send =() =>{
-        if (this.state.name === '' || this.state.price === 0 || this.state.area === '' || this.state.dateCreated === '' || this.state.dateExpired === '' || this.state.voucher === 0) {
-            if(this.state.name === ''){} 
-            if(this.state.price === 0 ){}
-            if(this.state.area === '') {}
-            if(this.state.date_created === ''){} 
-            if(this.state.date_expired === ''){} 
-            if(this.state.voucher === 0){} 
-        }else{
-            <BtnConfirm
-                object={this.state.bill}
-                objectType="bills"
-                typeConfirm="save"
-
-            />
-        }
-        
-        
-        
-    }
-    
-    
     render(){
 
-       
+
       
         return(
             <div id='bill-macker'>
@@ -208,12 +203,21 @@ class BillMacker extends Component{
                                 onChange={this.handleDateExpirationChange}/>
             
                         </div>
-
-                        <div className="clearfix"></div>
-                        {}
-                        <input type="button" value="Guardar" className="btn btn-success" onClick={this.send}/>  
-                        <NavLink to="/home" className="btn btn-cancel"  >Cancelar</NavLink> 
-                        
+                        {this.state.goSend === false ?
+                            <div>
+                                <div className="clearfix"></div>
+                                <input type="button" value="Guardar" className="btn btn-success" onClick={this.send}/>  
+                                <NavLink to="/home" className="btn btn-cancel"  >Cancelar</NavLink> 
+                            </div>
+                        :
+                        this.state.goSend === true &&
+                            <BtnConfirm
+                                object={this.state.bill}
+                                objectType="bills"
+                                typeConfirm="billSave"
+                                origin="/crear-facturas"       
+                            />
+                        }
                         
 
                     </form>

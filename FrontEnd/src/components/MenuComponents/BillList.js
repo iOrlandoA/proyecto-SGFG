@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 import BillOnList from '../FunctionalComponents/BillOnList';
 import Slider from '../BasePageComponents/Slider';
+import axios from 'axios';
 
 // Componente encargado de crear la Lista de Facturas  (Orlando)
 
@@ -8,49 +9,37 @@ import Slider from '../BasePageComponents/Slider';
 class BillList extends Component{
     //Datos de Prueba borrar a futuro
     state ={
-        bills:[
-
-            {
-                facturaId: 1,
-                type: 'debit',
-                name : 'Orlando',
-                voucher: 90917951511,
-                price : 10000,
-                areaTransaction : 'Transporte',
-                description:'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industrys standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.',
-                dateCreated : '2022-05-09',
-                dateExpiration : '2023-06-09', 
-            },
-            {
-                facturaId: 2,
-                type: 'debit',
-                name : 'Ale',
-                voucher: 32114451511,
-                price : 2000000,
-                areaTransaction : 'Animales',
-                description:'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industrys standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.',
-                dateCreated : '2023-05-09',
-                dateExpiration : '2024-05-06', 
-            },
-            {
-                facturaId: 3,
-                type: 'credit',
-                name : 'ChantoNix',
-                voucher: 121211511,
-                price : 40000,
-                areaTransaction : 'Alimentos',
-                description:'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industrys standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.',
-                dateCreated : '2023-05-09',
-                dateExpiration : '2021-07-07', 
-            }
-
-        ],
+        bills:[],
         dateStart : '',
         dateEnd : ''
 
     }
 
     
+    componentDidMount = async()=>{
+
+        
+        
+        axios.get(`${this.apiUrl}/bills`, {
+            headers: {
+                'Accept': 'application/json', 
+            }
+        }).then(res =>{
+
+            this.setState({
+                bills: res.data,
+                status: 'success'
+            });
+    
+        }).catch(error => {
+            // Manejar el error
+            console.error(error);
+          });
+         
+       
+    }
+
+
     listChange= (datos) =>{
         console.log(datos);
     }
