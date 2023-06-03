@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
 import BillOnList from '../FunctionalComponents/BillOnList';
+import Slider from '../BasePageComponents/Slider';
 
 // Componente encargado de crear la Lista de Facturas  (Orlando)
 
@@ -13,6 +14,7 @@ class BillList extends Component{
                 facturaId: 1,
                 type: 'debit',
                 name : 'Orlando',
+                voucher: 90917951511,
                 price : 10000,
                 areaTransaction : 'Transporte',
                 description:'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industrys standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.',
@@ -23,6 +25,7 @@ class BillList extends Component{
                 facturaId: 2,
                 type: 'debit',
                 name : 'Ale',
+                voucher: 32114451511,
                 price : 2000000,
                 areaTransaction : 'Animales',
                 description:'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industrys standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.',
@@ -33,6 +36,7 @@ class BillList extends Component{
                 facturaId: 3,
                 type: 'credit',
                 name : 'ChantoNix',
+                voucher: 121211511,
                 price : 40000,
                 areaTransaction : 'Alimentos',
                 description:'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industrys standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.',
@@ -87,48 +91,55 @@ class BillList extends Component{
 
     render(){
         return(
-            <div id='content' className='center'>
-           
-                <h2 className='subheader'> Lista de Facturas </h2>
+            <div className='center'>
+
+                {/*Se introduce el Slider en pequeño*/}
+                <Slider
+                    title="Lista Facturas"
+                    size="slider-small"
+                />
+
+                <h2 className='subheader'></h2>
 
                 {/*Se muestran inputs de Fechas*/}
-                <div className="bill-list">
+                <div className="bill-list" >
                     <label>Fecha Inicio</label>
                     <input
                         type="date" 
                         value={this.state.dateStart}
                         onChange={this.handleDateStartChange}/>
-
-                </div>
-            
-                <div  className="bill-list">
+                
                     <label>Fecha Fin</label>
                     <input 
                         type="date"
                         value={this.state.dateEnd}
                         onChange={this.handleDateEndChange}/>
+                    <div className="clearfix"></div> 
 
+
+                    {/*Parte de Titulos de la Tabla*/}      
+                    <table id="table" >
+                        <thead>
+                            <tr>
+                                <th>ID Factura</th>
+                                <th>Tipo Transacion</th>
+                                <th>Nombre </th>
+                                <th>Comprobante</th>
+                                <th>Precio</th>
+                                <th>Area </th>
+                                <th>Fecha Creación</th>
+                                <th>Fecha Expiración </th>
+                                <th>Descripción</th>
+                            </tr>
+                        </thead>
+
+                        {/*Aqui se llama al Metodo que Genera la Lista*/}
+                        {this.generateList()}
+
+                    </table>
                 </div>
-                {/*Parte de Titulos de la Tabla*/}      
-                <table id="table" className='bill-list'>
-                    <thead>
-                        <tr>
-                            <th>ID Factura</th>
-                            <th>Tipo Transacion</th>
-                            <th>Nombre </th>
-                            <th>Precio</th>
-                            <th>Area </th>
-                            <th>Fecha Creación</th>
-                            <th>Fecha Expiración </th>
-                            <th>Descripción</th>
-                        </tr>
-                    </thead>
-                    {/*Aqui se llama al Metodo que Genera la Lista*/}
-                    {this.generateList()}
 
-                </table>
-                
-                
+                {/*Fin del Div de Bill List*/}
             </div>
             
             

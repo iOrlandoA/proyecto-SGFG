@@ -23,7 +23,7 @@ body {
 
 
 table{
-  float: left;
+  float: center;
   margin-top: 50px;
   caption-side: bottom;
   margin-left: auto;
@@ -45,13 +45,36 @@ td,th{
   
   
 }
+
+
 .descriptionCell{
-  max-width: 250px;
+  max-width: 300px;
   max-height: 75px;
   text-overflow: ellipsis;
   overflow: hidden;
   
 }
+
+
+.bill-list{
+  display: inline-block; 
+  min-height: 700px;
+ 
+}
+.bill-list input[type="date"]{
+  float: center;
+  width: 150px;
+  min-height: 30px;
+  padding: 3px;
+  margin-bottom: 5px;
+  transition: 300ms all;  
+}
+.bill-list label{
+  text-align: auto;
+  padding-right: 10%;
+  padding-left: 10%;
+}
+
 
 #logo{
   width: 30%;
@@ -105,7 +128,14 @@ td,th{
 }
 #menu a:hover{
   color: #61dafb;
+
 }
+
+
+.active{
+  border-bottom: 2px solid #61dafb;
+}
+
 /* No deja pasar las cosas hacía arriba*/
 .clearfix{
   clear:both;
@@ -170,7 +200,7 @@ td,th{
 #content{
   width: 70%;
   float: left;
-  min-height: 650px;
+  min-height: 800px;
   margin-right: 25px;
 }
 #sidebar{
@@ -218,12 +248,26 @@ td,th{
 }
 
 .btn-success{
+  display: inline-block;
+  margin: 20px;
   background: rgb(8, 171, 8);
 
 }
 .btn-success:hover{
   background: black;
 }
+
+.btn-cancel{
+  display: inline-block;
+  margin: 20px;
+  background: rgb(163, 24, 15);
+
+}
+.btn-cancel:hover{
+
+  background: black;
+}
+
 
 input[type="text"],input[type="number"],input[type="date"],textarea{
   width: 100%;
@@ -234,22 +278,6 @@ input[type="text"],input[type="number"],input[type="date"],textarea{
   transition: 300ms all;
 }
 
-.bill-list{
-  display: inline-block; 
-}
-.bill-list input[type="date"]{
-  float: center;
-  width: 150px;
-  min-height: 30px;
-  padding: 3px;
-  margin-bottom: 5px;
-  transition: 300ms all;  
-}
-.bill-list label{
-  text-align: auto;
-  padding-right: 10%;
-  padding-left: 10%;
-}
 
 
 input[type="number"]{

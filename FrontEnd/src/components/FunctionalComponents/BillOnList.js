@@ -32,6 +32,7 @@ class BillOnList extends Component{
                     <td>{this.state.bill.facturaId}</td>
                     <td>{this.state.bill.type}</td>
                     <td>{this.state.bill.name}</td>
+                    <td>{this.state.bill.voucher}</td>
                     <td>{this.state.bill.price}</td>
                     <td>{this.state.bill.areaTransaction}</td>
                     <td>{this.state.bill.dateCreated}</td>
