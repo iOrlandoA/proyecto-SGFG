@@ -18,12 +18,12 @@ class BillMacker extends Component{
         bill : {
                
             name : '',
-            price : 0,
+            price : null,
             area : '',
             description : '',
             date_created : '',
             date_expired : '', 
-            voucher: 0
+            voucher: null
         },
         areas: {},
         goSend: false,
@@ -134,6 +134,28 @@ class BillMacker extends Component{
         }   
         
     }
+
+    noSend=()=>{
+        this.setState(
+            {goSend:false}
+        );
+
+        this.setState(
+            {bill : {
+               
+                name : '',
+                price : 0,
+                area : '',
+                description : '',
+                date_created : '',
+                date_expired : '', 
+                voucher: 0
+            }}
+        );
+            
+
+
+    }
         
 
     //Si se monto el Componentes
@@ -181,17 +203,19 @@ class BillMacker extends Component{
 
                         <div className="form-group">
                             <label>Nombre</label>
-                            <input type="text"  onChange={this.handleNameChange}/>
+                            <input type="text" value={this.state.bill.name} onChange={this.handleNameChange}/>
                         </div>
 
                         <div className="form-group">
                             <label>Comprobante</label>
-                            <input type="number" onChange={this.handleVoucherChange}/>
+                            <input type="number" value={this.state.bill.voucher} onChange={this.handleVoucherChange}/>
                         </div>
 
                         <div className="form-group">
                             <label>Precio</label>
-                            <input type="number" placeholder="₡" onChange={this.handlePriceChange}/>
+                            
+                            <input type="number" value={this.state.bill.price} placeholder="₡" onChange={this.handlePriceChange}/>
+                            
                         </div>
 
                         <div className="form-group select">
@@ -211,7 +235,7 @@ class BillMacker extends Component{
                         <div className="form-group">
                             
                             <label>Descripcion</label>
-                            <textarea name="description" onChange={this.handleDescriptionChange} ></textarea>
+                            <textarea name="description" value={this.state.bill.description} onChange={this.handleDescriptionChange} ></textarea>
 
                         </div>
 
@@ -219,7 +243,7 @@ class BillMacker extends Component{
                             <label>Fecha Emision</label>
                             <input
                                 type="date"
-                                value={this.state.date_created}
+                                value={this.state.bill.date_created}
                                 onChange={this.handleDateCreatedChange}/>
             
                         </div>
@@ -228,7 +252,7 @@ class BillMacker extends Component{
                             <label>Fecha de Pago Estimada</label>
                             <input
                                 type="date"
-                                value={this.state.date_expired}
+                                value={this.state.bill.date_expired}
                                 onChange={this.handleDateExpirationChange}/>
             
                         </div>
@@ -247,8 +271,9 @@ class BillMacker extends Component{
                             <BtnConfirm
                                 object={this.state.bill}
                                 objectType="bills"
-                                typeConfirm="billSave"
-                                origin="/crear-facturas"       
+                                typeConfirm="save"
+                                origin="/crear-facturas" 
+                                noSend= {this.noSend}      
                             />
                         }
 

@@ -10,10 +10,10 @@ class BtnConfirm extends Component{
         {this.props.typeConfirm === "save" &&
             axios.post(`${this.apiUrl}/${this.props.objectType}`, this.props.object,{
                 headers: {
-                    'Accept': 'application/json', 
+                    'Accept': 'application/json'
                 }
             })
-            .then()
+            .then((res)=>{console.log(res);})
             .catch((err) => {
                 console.log(err);
             });  
@@ -24,7 +24,7 @@ class BtnConfirm extends Component{
         {this.props.typeConfirm === "update" &&
             axios.put(`${this.apiUrl}/${this.props.objectType}/${this.props.id}`, this.props.object,{
                 headers: {
-                    'Accept': 'application/json', 
+                    'Accept': 'application/json' 
                 }
             })
             .then()
@@ -37,7 +37,7 @@ class BtnConfirm extends Component{
         {this.props.typeConfirm === "delete" &&
             axios.delete(`${this.apiUrl}/${this.props.objectType}/${this.props.id}`, {
                 headers: {
-                    'Accept': 'application/json', 
+                    'Accept': 'application/json' 
                 }
             })
             .then()
@@ -46,15 +46,14 @@ class BtnConfirm extends Component{
             });
             
         }
-
-
-        <NavLink to= {this.props.origin}></NavLink>
+        
+        this.props.noSend();
 
         
     };
 
     handleCloseModal = () => {
-        // Aquí puedes realizar la acción que deseas después de confirmar
+        // Se regresa al Origen
        return(
             <NavLink to= {this.props.origin}></NavLink>
 

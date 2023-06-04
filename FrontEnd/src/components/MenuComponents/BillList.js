@@ -14,8 +14,8 @@ class BillList extends Component{
         super(props);
         this.state ={
             bills:[{}],
-            dateStart : '1999-01-20',
-            dateEnd : '1999-01-20',
+            dateStart : '',
+            dateEnd : '',
             isLoading: true
     
     
@@ -25,7 +25,7 @@ class BillList extends Component{
     
 
     getBills = ()=>{
-        axios.get(`${this.apiUrl}/bills`, {
+        axios.get(`${this.apiUrl}/bills?start_date=${this.state.dateStart}&end_date=${this.state.dateEnd}`, {
             headers: {
                 'Accept': 'application/json', 
             }
@@ -61,8 +61,14 @@ class BillList extends Component{
     }
     // Antes de que se monte
     componentDidMount =async() =>{
-        this.getBills();
+        
         this.getDate();
+        setTimeout(() => {
+            this.getBills();
+        }, 200); 
+        
+        
+        
         
         
 

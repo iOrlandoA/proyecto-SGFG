@@ -48,7 +48,7 @@ body {
 }  
 
 #dash-content:hover{
-  box-shadow: 1px 1px 1px 1px #757575;
+  box-shadow: 0px 0px 5px #ccc inset;
 }
 
 .dashboard label{
@@ -412,6 +412,11 @@ textarea{
 .form-group label{
   padding-right: 30%;
 }
+
+.form-group span{
+  float: left;
+}
+
 .select{
   margin-top: 15px;
   margin-bottom: 10px;
