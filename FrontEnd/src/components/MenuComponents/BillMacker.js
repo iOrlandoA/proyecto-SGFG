@@ -12,7 +12,8 @@ import BtnConfirm from '../FunctionalComponents/BtnConfirm';
 class BillMacker extends Component{
    
     apiUrl= "http://localhost:3000/api";
- 
+    
+    //Genera objetos state cambiantes 
     state = {
         bill : {
                
@@ -25,7 +26,8 @@ class BillMacker extends Component{
             voucher: 0
         },
         areas: {},
-        goSend: false
+        goSend: false,
+        validationTest: []
         
         
     };
@@ -42,16 +44,22 @@ class BillMacker extends Component{
 
     // Cambia cuando se cambia el Precio
     handlePriceChange = (event) => {
-        const {bill}= this.state;
-        bill.price = event.target.value;
-        this.setState({bill});
+
+        if (!isNaN(event.target.value)=== true){
+            const {bill}= this.state;
+            bill.price = event.target.value;
+            this.setState({bill});
+        }
+       
     }
 
      // Cambia cuando se cambia el Comprobante
     handleVoucherChange = (event) => {
-        const {bill}= this.state;
-        bill.voucher = event.target.value;
-        this.setState({bill});
+        if (!isNaN(event.target.value)=== true){
+            const {bill}= this.state;
+            bill.voucher = event.target.value;
+            this.setState({bill});
+        }    
     }
 
 
@@ -85,18 +93,42 @@ class BillMacker extends Component{
     }
 
 
-    //Envia los datos a la API
+    //Realiza las validaciones para el correcto envío de Factura
     send =()=>{
-        if (this.state.bill.name === "" || this.state.bill.price === 0 || this.state.bill.area === "" || this.state.bill.dateCreated === "" ||  this.state.bill.voucher === 0) {
-            if(this.bill.state.name === ''){} 
-            if(this.bill.state.price === 0 ){}
-            if(this.bill.state.area === '') {}
-            if(this.bill.state.date_created === ''){} 
-            if(this.bill.state.voucher === 0){} 
-
+        this.setState({ validationTest: [] });
+        if (this.state.bill.name === "" || this.state.bill.price === 0  ||
+            this.state.bill.area === "" || this.state.bill.dateCreated === "" ||  this.state.bill.voucher === 0  ) 
+        {
+            
+            if(this.state.bill.name === ''){
+                this.setState(prevState =>({
+                    validationTest:[...prevState.validationTest,{type:"name", msg:"Nombre vacío"}]
+                }));
+            } 
+            if(this.state.bill.price === 0 ){
+                this.setState(prevState =>({
+                    validationTest:[...prevState.validationTest,{type:"price", msg:"Ingrese el precio o Invalido"}]
+                }));
+            }
+            if(this.state.bill.area === '') {
+                this.setState(prevState =>({
+                    validationTest:[...prevState.validationTest,{type:"area", msg:"Campo area vacío"}]
+                }));
+            }
+            if(this.state.bill.date_created === ''){
+                this.setState(prevState =>({
+                    validationTest:[...prevState.validationTest,{type:"date_created", msg: "Fecha Inicio Vacía"}]
+                }));
+            } 
+            if(this.state.bill.voucher === 0){
+                this.setState(prevState =>({
+                    validationTest:[...prevState.validationTest, {type:"voucher", msg: "Comprobante Vacío o Invalido"}]
+                }));
+            } 
+            console.log(this.state.validationTest);
+            
         }else{
             
-            console.log("Entro en false");
             this.setState({goSend:true});
             
         }   
@@ -109,6 +141,7 @@ class BillMacker extends Component{
 
         this.setState({goSend:false});
         
+        // Trae todas las areas desde la base de datos
         axios.get(`${this.apiUrl}/areas`, {
             headers: {
                 'Accept': 'application/json', 
@@ -182,27 +215,27 @@ class BillMacker extends Component{
 
                         </div>
 
-                        <div className="form-group">
+                        <div className="bill-list ">
                             <label>Fecha Emision</label>
                             <input
-                                id="dateCreated"
                                 type="date"
-                                name="dateCreated" 
                                 value={this.state.date_created}
                                 onChange={this.handleDateCreatedChange}/>
             
                         </div>
 
-                        <div className="form-group">
+                        <div className="bill-list ">
                             <label>Fecha de Pago Estimada</label>
                             <input
-                                id="dateExpiration"
                                 type="date"
-                                name="dateExpiration"
                                 value={this.state.date_expired}
                                 onChange={this.handleDateExpirationChange}/>
             
                         </div>
+
+
+
+                        {/*Muestra botones de guardar ó Confirmar guardado si los datos son correctos*/}
                         {this.state.goSend === false ?
                             <div>
                                 <div className="clearfix"></div>
@@ -217,6 +250,21 @@ class BillMacker extends Component{
                                 typeConfirm="billSave"
                                 origin="/crear-facturas"       
                             />
+                        }
+
+                        {/*Muestra muestra posibles errores en los input de datos*/}
+                        {this.state.validationTest.length !==0 &&
+                            <div>
+                                <p className='subtitle'> Errores en la creación de factura </p>
+                                {this.state.validationTest.map((val, i) => {
+                                    return( 
+                                            <div>
+                                                <p id='validation-error'>  {val.msg}  </p>
+                                                <div className='clearfix'></div>
+                                            </div>
+                                        );
+                                })}
+                            </div>
                         }
                         
 
