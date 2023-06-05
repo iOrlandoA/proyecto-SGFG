@@ -67,14 +67,9 @@ class BillList extends Component{
             this.getBills();
         }, 200); 
         
-        
-        
-        
-        
-
         setTimeout(() => {
             this.setState({ isLoading: false });
-        }, 1000); 
+        }, 800); 
         
     }
 
@@ -82,22 +77,35 @@ class BillList extends Component{
 
     // Cambia cuando se selecciona una Fecha Inicio Nueva
     handleDateStartChange = (event) => {
+        this.setState({ isLoading: true });
         this.setState({dateStart : event.target.value});
-        console.log(this.state.dateStart);
+        this.refresh();     
+    
     }
 
     // Cambia cuando se selecciona una Fecha Fin Nueva
     handleDateEndChange = (event) => {
-        
+        this.setState({ isLoading: true });
         this.setState({dateEnd:event.target.value});
+        this.refresh();
         
+         
+    }
+
+    refresh=()=>{
+        setTimeout(() => { 
+            this.setState({ isLoading: false });
+        }, 1000);
     }
     
 
     render(){
         
         if(this.state.isLoading===true){
+            this.getBills();
             return(<h1 className='subheader'> Cargando...</h1>);
+            
+            
 
         }
         
@@ -118,6 +126,7 @@ class BillList extends Component{
                         <label>Fecha Inicio</label>
                         <input
                             type="date" 
+                            id='dateStart'
                             value={this.state.dateStart}
                             onChange={this.handleDateStartChange}
                         />

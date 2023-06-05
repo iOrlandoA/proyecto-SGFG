@@ -307,7 +307,7 @@ body {
   margin-right: 25px;
 }
 #sidebar{
-  width: 25%;
+  width: 15%;
   float: left;
 }
 
@@ -474,14 +474,7 @@ input[type="text"]:focus, textarea:focus{
 /*RESPONSIVE
 Desde la altura 0px hasta 1370px h*/
 
-@media (max-width:1605px){
 
-  #sidebar{
-    float: right;
-    margin-left: 30px;
-    margin-right: -120px;
-  }
-}
 
 
 

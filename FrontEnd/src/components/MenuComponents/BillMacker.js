@@ -18,12 +18,12 @@ class BillMacker extends Component{
         bill : {
                
             name : '',
-            price : null,
+            price : 0,
             area : '',
             description : '',
             date_created : '',
             date_expired : '', 
-            voucher: null
+            voucher: 0
         },
         areas: {},
         goSend: false,
@@ -96,23 +96,23 @@ class BillMacker extends Component{
     //Realiza las validaciones para el correcto envío de Factura
     send =()=>{
         this.setState({ validationTest: [] });
-        if (this.state.bill.name === "" || this.state.bill.price === 0  ||
+        if (this.state.bill.name === "" || this.state.bill.price === 0  || this.state.bill.price === null ||
             this.state.bill.area === "" || this.state.bill.dateCreated === "" ||  this.state.bill.voucher === 0  ) 
         {
             
             if(this.state.bill.name === ''){
                 this.setState(prevState =>({
-                    validationTest:[...prevState.validationTest,{type:"name", msg:"Nombre vacío"}]
+                    validationTest:[...prevState.validationTest,{type:"name", msg:"Nombre Vacío"}]
                 }));
             } 
-            if(this.state.bill.price === 0 ){
+            if(this.state.bill.price === 0 || this.state.bill.price === null ){
                 this.setState(prevState =>({
-                    validationTest:[...prevState.validationTest,{type:"price", msg:"Ingrese el precio o Invalido"}]
+                    validationTest:[...prevState.validationTest,{type:"price", msg:"Precio Vacío o Invalido"}]
                 }));
             }
             if(this.state.bill.area === '') {
                 this.setState(prevState =>({
-                    validationTest:[...prevState.validationTest,{type:"area", msg:"Campo area vacío"}]
+                    validationTest:[...prevState.validationTest,{type:"area", msg:"Campo area Vacío"}]
                 }));
             }
             if(this.state.bill.date_created === ''){
@@ -190,6 +190,7 @@ class BillMacker extends Component{
 
       
         return(
+            <div>
             <div id='bill-macker'>
                 {/*Se introduce el Slider en pequeño*/}
                 <Slider  
@@ -257,7 +258,7 @@ class BillMacker extends Component{
             
                         </div>
 
-
+                        
 
                         {/*Muestra botones de guardar ó Confirmar guardado si los datos son correctos*/}
                         {this.state.goSend === false ?
@@ -296,11 +297,13 @@ class BillMacker extends Component{
                     </form>
 
                 </div>
-                <SideBar/>                    
+                                 
                 
 
             {/*End Div BillMacker*/}
             </div> 
+                <SideBar/>  
+            </div>
         );                            
     } 
 

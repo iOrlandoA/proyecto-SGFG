@@ -9,7 +9,17 @@ class BillOnList extends Component{
         super(props);
 
         this.state ={
-            bill:{},
+            bill:{
+                id: 0,
+                voucher: 0,
+                name: '',
+                price: 0,
+                area: '',
+                date_created: '',
+                date_expired: '',
+                description: ''
+
+            },
             estado : 0
         }   
     }
@@ -24,6 +34,7 @@ class BillOnList extends Component{
     
     componentDidMount=()=>{
         this.setState({bill:this.props.bill});
+        
     }
 
 
