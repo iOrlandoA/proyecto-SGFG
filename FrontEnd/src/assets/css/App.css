@@ -22,36 +22,162 @@ body {
 }
 
 
-table{
-  float: left;
-  margin-top: 50px;
-  caption-side: bottom;
-  margin-left: auto;
-  margin-right: auto;
-  border-collapse: collapse;
-  text-align: left;
-}
-th{
-  background-color: black;
-  color: whitesmoke;
+
+
+.dashboard{
+  display: inline-block;
+    position: relative;
+    background-color: #f7f7f7;
+    transition: 100ms all;
+
+    border-radius: 5px;
+
+
+    margin-left: 60px;
+    margin-right: 40px;
+    min-width: 200px;
+    height: 100px;
+    margin-top: 10px;
+    margin-bottom: 20px;
+
+    padding-top: 20px;
+    padding-bottom: 15px;
+    padding-left: 15px;
+    padding-right:60px;
+
+}  
+
+#dash-content:hover{
+  box-shadow: 1px 1px 1px 1px #757575;
 }
 
-td,th{
-  border: 2px solid black;
-  padding-left: 10px;
-  padding-right: 10px;
-  padding-top: 10px;
-  padding-bottom: 10px;
-  
-  
-}
-.descriptionCell{
-  max-width: 250px;
-  max-height: 75px;
-  text-overflow: ellipsis;
-  overflow: hidden;
+.dashboard label{
+  position: absolute;
+  width: 100%;
+  height: 50%;
+  left: 0;
+  font-size: 20px;
+  margin-top: 15px;
+  margin-bottom: -20px;
+  text-align: left;
   
 }
+.diff-porcentual {
+  float :right;
+  max-width: 120px;
+  margin-top: -10px;
+  margin-left: 150px;
+  margin-right: -50px;
+  border-radius: 10px;
+}
+.diff-porcentual img{
+  float: left;
+  height: 25px;
+  padding-left: 5px;
+  padding-top: 2px;
+
+}
+
+.diff-porcentual span{
+  float: right;
+  height: 25px;
+  padding-top: 5px;
+  padding-left: 4px;
+  padding-right: 15px;
+
+}
+
+#labelincome{
+  top: 0;
+  
+  color: gray;
+  padding-left: 15px;
+
+  
+}
+#labeloutcome{
+  color: gray;
+  top: 0;
+  padding-left: 15px;
+}
+
+#labelmoney{
+  bottom: 0;
+  text-align: left;
+  padding-left: 30px;
+  font-size: 30px;
+  content: "$";
+  
+}
+
+/*Parte Tabla*/
+
+    table{
+      float: center;
+      margin-top: 50px;
+      caption-side: bottom;
+      margin-left: auto;
+      margin-right: auto;
+      border-collapse: collapse;
+      text-align: left;
+    }
+    th{
+      background-color: black;
+      color: whitesmoke;
+    }
+
+    td,th{
+      border: 2px solid black;
+      padding-left: 10px;
+      padding-right: 10px;
+      padding-top: 10px;
+      padding-bottom: 10px;
+      max-width: 100;
+      
+      
+    }
+
+
+    .descriptionCell{
+      max-width: 300px;
+      max-height: 75px;
+      text-overflow: ellipsis;
+      overflow: hidden;
+      
+    }
+
+
+
+    .bill-list{
+      display: inline-block; 
+      
+    }
+
+    .bill-list #list{
+      min-height: 600px; 
+    }
+
+
+
+    .bill-list input[type="date"]{
+      float: center;
+      width: 150px;
+      min-height: 30px;
+      padding: 3px;
+      margin-bottom: 5px;
+      transition: 300ms all;  
+    }
+    .bill-list label{
+      text-align: auto;
+      padding-right: 10%;
+      padding-left: 10%;
+    }
+
+
+/*Fin Parte Tabla*/
+
+
+
 
 #logo{
   width: 30%;
@@ -105,7 +231,14 @@ td,th{
 }
 #menu a:hover{
   color: #61dafb;
+
 }
+
+
+.active{
+  border-bottom: 2px solid #61dafb;
+}
+
 /* No deja pasar las cosas hacía arriba*/
 .clearfix{
   clear:both;
@@ -168,9 +301,9 @@ td,th{
 }
 
 #content{
-  width: 70%;
+  width: 75%;
   float: left;
-  min-height: 650px;
+  min-height: 800px;
   margin-right: 25px;
 }
 #sidebar{
@@ -218,11 +351,30 @@ td,th{
 }
 
 .btn-success{
+  display: inline-block;
+  margin: 20px;
   background: rgb(8, 171, 8);
 
 }
 .btn-success:hover{
   background: black;
+}
+
+.btn-cancel{
+  display: inline-block;
+  margin: 20px;
+  background: rgb(163, 24, 15);
+
+}
+.btn-cancel:hover{
+
+  background: black;
+}
+
+#validation-error{
+  display: block;
+  float: left;
+  color: red;
 }
 
 input[type="text"],input[type="number"],input[type="date"],textarea{
@@ -234,22 +386,6 @@ input[type="text"],input[type="number"],input[type="date"],textarea{
   transition: 300ms all;
 }
 
-.bill-list{
-  display: inline-block; 
-}
-.bill-list input[type="date"]{
-  float: center;
-  width: 150px;
-  min-height: 30px;
-  padding: 3px;
-  margin-bottom: 5px;
-  transition: 300ms all;  
-}
-.bill-list label{
-  text-align: auto;
-  padding-right: 10%;
-  padding-left: 10%;
-}
 
 
 input[type="number"]{
@@ -308,6 +444,11 @@ input[type="text"]:focus, textarea:focus{
   padding-bottom: 10px;
 }
 
+.subtitle{
+  border-bottom: 1px solid #eee;
+  padding-bottom: 10px;
+}
+
 
 .mid-form{
   width: 50%;
@@ -323,77 +464,6 @@ input[type="text"]:focus, textarea:focus{
 
 }
 
-
-
-
-
-
-/*
-.article-item{
-  width: 100%;
-  border-bottom: 1px solid #eee;
-  padding-bottom: 20px;
-  padding-top: 20px;
-  text-align: left;
-}
-.article-item .image-wrap{
-  width: 130px;
-  height: 130px;
-  overflow: hidden;
-  float: left;
-  margin-right: 15px;
-  border: 1px solid #ccc;
-}
-
-.article-item .image-wrap img{
-  height: 100%;
-  text-align: center;
-}
-
-.article-item h2{
-  display: block;
-  width: 100%;
-  padding: 0px;
-  margin: 0px;
-  margin-bottom: 7px;
-}
-.article-item .date{
-  display: block;
-  width: 100%;
-  color: #6d6d6d;
-
-}
-
-.article-item a{
-  display: block;
-  color: #444;
-  text-decoration: none;
-  margin-top: 10px;
-}
-
-.article-item a:hover{
-  text-decoration: underline;
-}
-
-.article-detail .image-wrap {
-  float: none;
-  width: 100%;
-  height: 250px;
-}
-
-.article-detail .subheader{
-  margin-top: 15px;
-  margin-bottom: 0px;
-  border: none;
-}
-
-.article-detail .image-wrap img {
-  width: 100%;
-  height: auto;
-}
-
-
-*/
 
 
 /*RESPONSIVE
