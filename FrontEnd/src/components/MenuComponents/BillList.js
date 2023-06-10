@@ -69,7 +69,7 @@ class BillList extends Component{
         
         setTimeout(() => {
             this.setState({ isLoading: false });
-        }, 800); 
+        }, 200); 
         
     }
 
@@ -95,7 +95,7 @@ class BillList extends Component{
     refresh=()=>{
         setTimeout(() => { 
             this.setState({ isLoading: false });
-        }, 1000);
+        }, 400);
     }
     
 
@@ -120,7 +120,7 @@ class BillList extends Component{
                 />
                 <div className='center' >
                     <h2 className='subheader'></h2>
-
+                    
                     {/*Se muestran inputs de Fechas*/}
                     <div className="bill-list"  id='list'>
                         <label>Fecha Inicio</label>
