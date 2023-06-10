@@ -11,7 +11,7 @@ import BtnConfirm from '../FunctionalComponents/BtnConfirm';
 
 class BillMacker extends Component{
    
-    apiUrl= "http://localhost:3000/api";
+    apiUrl = process.env.REACT_APP_API_URL;
     
     //Genera objetos state cambiantes 
     state = {

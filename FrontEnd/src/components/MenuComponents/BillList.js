@@ -7,7 +7,7 @@ import BillTable from '../FunctionalComponents/BillTable';
 
 
 class BillList extends Component{
-    apiUrl= "http://localhost:3000/api";
+    
     
 
     constructor(props){
@@ -25,7 +25,7 @@ class BillList extends Component{
     
 
     getBills = ()=>{
-        axios.get(`${this.apiUrl}/bills?start_date=${this.state.dateStart}&end_date=${this.state.dateEnd}`, {
+        axios.get(`${process.env.REACT_APP_API_URL}/bills?start_date=${this.state.dateStart}&end_date=${this.state.dateEnd}`, {
             headers: {
                 'Accept': 'application/json', 
             }
@@ -69,7 +69,7 @@ class BillList extends Component{
         
         setTimeout(() => {
             this.setState({ isLoading: false });
-        }, 800); 
+        }, 200); 
         
     }
 
