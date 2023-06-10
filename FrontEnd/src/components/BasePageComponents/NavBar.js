@@ -13,23 +13,23 @@ class NavBar extends Component{
                  {/* Menu Navegación */}
                 <ul>
                     <li>
-                        <NavLink to="/home">Inicio</NavLink>
+                        <NavLink to="/home" activeclassname="active" >Inicio</NavLink>
                     </li>
 
                     <li>
-                        <NavLink to="#">Libro de Bancos</NavLink>
+                        <NavLink to="#" >Libro de Bancos</NavLink>
                     </li>
 
                     <li>
-                        <NavLink to="/crear-facturas">Crear Factura</NavLink>
+                        <NavLink to="/crear-facturas" activeclassname="active" >Crear Factura</NavLink>
                     </li>
 
                     <li>
-                        <NavLink to="/lista-facturas">Lista Facturas</NavLink>
+                        <NavLink to="/lista-facturas" activeclassname="active" >Lista Facturas</NavLink>
                     </li>
                     
                     <li>
-                        <NavLink to="#">Menu Reportes</NavLink>
+                        <NavLink to="#"  >Menu Reportes</NavLink>
                     </li>
 
                 </ul>

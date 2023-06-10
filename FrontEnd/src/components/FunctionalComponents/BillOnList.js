@@ -9,7 +9,17 @@ class BillOnList extends Component{
         super(props);
 
         this.state ={
-            bill:this.props.bill,
+            bill:{
+                id: 0,
+                voucher: 0,
+                name: '',
+                price: 0,
+                area: '',
+                date_created: '',
+                date_expired: '',
+                description: ''
+
+            },
             estado : 0
         }   
     }
@@ -17,26 +27,48 @@ class BillOnList extends Component{
    
     edit = (event) =>{
         const {bill}=this.state;
-        bill.dateExpiration = event.target.value;
+        bill.date_expired = event.target.value;
         this.setState({bill});
         this.props.listChange('Prueba'); //Se debería de enviar la nueva factura a actualizar                         
     }
     
+    componentDidMount=()=>{
+        this.setState({bill:this.props.bill});
+        
+    }
+
 
     
     render(){
         return(    
             <tbody>   
                 {/*Crea la fila con los Datos enviados por Props*/}
-                <tr className='table-rode' >
-                    <td>{this.state.bill.facturaId}</td>
-                    <td>{this.state.bill.type}</td>
-                    <td>{this.state.bill.name}</td>
-                    <td>{this.state.bill.price}</td>
-                    <td>{this.state.bill.areaTransaction}</td>
-                    <td>{this.state.bill.dateCreated}</td>
+                <tr>
+                    <td>
+                        {this.state.bill.id}
+                    </td>
+                    
+                    <td>
+                        {this.state.bill.voucher}
+                    </td>
+                    
+                    <td>
+                        {this.state.bill.name}
+                    </td>
+                    
+                    <td>
+                        {`₡ ${this.state.bill.price}`}
+                    </td>
+                    
+                    <td>
+                        {this.state.bill.area}
+                    </td>
+                    
+                    <td>
+                        {this.state.bill.date_created}
+                    </td>
                     <td >
-                        <input type='date' value={this.state.bill.dateExpiration} onChange={this.edit}></input>
+                        <input type='date' value={this.state.bill.date_expired} onChange={this.edit}/>
                     </td>
                     <td>
                         <div className='descriptionCell' >
