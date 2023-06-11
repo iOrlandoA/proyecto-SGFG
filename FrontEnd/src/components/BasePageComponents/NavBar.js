@@ -16,16 +16,17 @@ class NavBar extends Component{
                         <NavLink to="/home" activeclassname="active" >Inicio</NavLink>
                     </li>
 
-                    <li>
-                        <NavLink to="#" >Libro de Bancos</NavLink>
-                    </li>
 
                     <li>
                         <NavLink to="/crear-facturas" activeclassname="active" >Crear Factura</NavLink>
                     </li>
 
                     <li>
-                        <NavLink to="/lista-facturas" activeclassname="active" >Lista Facturas</NavLink>
+                        <NavLink to="/lista-facturas" activeclassname="active" >Facturas</NavLink>
+                    </li>
+
+                    <li>
+                        <NavLink to="#" >Empty</NavLink>
                     </li>
                     
                     <li>
