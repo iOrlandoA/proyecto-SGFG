@@ -23,7 +23,7 @@ class BillMacker extends Component{
             description : '',
             date_created : '',
             date_expired : '', 
-            voucher: 0
+            bill_ref: 0
         },
         areas: {},
         goSend: false,
@@ -54,10 +54,10 @@ class BillMacker extends Component{
     }
 
      // Cambia cuando se cambia el Comprobante
-    handleVoucherChange = (event) => {
+    handleBillRefChange = (event) => {
         if (!isNaN(event.target.value)=== true){
             const {bill}= this.state;
-            bill.voucher = event.target.value;
+            bill.bill_ref = event.target.value;
             this.setState({bill});
         }    
     }
@@ -97,7 +97,7 @@ class BillMacker extends Component{
     send =()=>{
         this.setState({ validationTest: [] });
         if (this.state.bill.name === "" || this.state.bill.price === 0  || this.state.bill.price === null ||
-            this.state.bill.area === "" || this.state.bill.dateCreated === "" ||  this.state.bill.voucher === 0  ) 
+            this.state.bill.area === "" || this.state.bill.dateCreated === "" ||  this.state.bill.bill_ref === 0  ) 
         {
             
             if(this.state.bill.name === ''){
@@ -120,9 +120,9 @@ class BillMacker extends Component{
                     validationTest:[...prevState.validationTest,{type:"date_created", msg: "Fecha Inicio Vacía"}]
                 }));
             } 
-            if(this.state.bill.voucher === 0){
+            if(this.state.bill.bill_ref === 0){
                 this.setState(prevState =>({
-                    validationTest:[...prevState.validationTest, {type:"voucher", msg: "Comprobante Vacío o Invalido"}]
+                    validationTest:[...prevState.validationTest, {type:"bill_ref", msg: "Comprobante Vacío o Invalido"}]
                 }));
             } 
             console.log(this.state.validationTest);
@@ -149,7 +149,7 @@ class BillMacker extends Component{
                 description : '',
                 date_created : '',
                 date_expired : '', 
-                voucher: 0
+                bill_ref: 0
             }}
         );
             
@@ -203,17 +203,17 @@ class BillMacker extends Component{
                     <form className="mid-form">
 
                         <div className="form-group">
-                            <label>Nombre</label>
+                            <label>Proveedor/Cliente</label>
                             <input type="text" value={this.state.bill.name} onChange={this.handleNameChange}/>
                         </div>
 
                         <div className="form-group">
-                            <label>Comprobante</label>
-                            <input type="number" value={this.state.bill.voucher} onChange={this.handleVoucherChange}/>
+                            <label>Numero Factura</label>
+                            <input type="number" value={this.state.bill.bill_ref} onChange={this.handleBillRefChange}/>
                         </div>
 
                         <div className="form-group">
-                            <label>Precio</label>
+                            <label>Monto Total</label>
                             
                             <input type="number" value={this.state.bill.price} placeholder="₡" onChange={this.handlePriceChange}/>
                             
@@ -222,7 +222,7 @@ class BillMacker extends Component{
                         <div className="form-group select">
                             {this.state.status === 'success' &&
                                 <select value = {this.state.bill.area} onChange={this.handleAreaChange} >
-                                    <option value="">Seleccione una opción</option>
+                                    <option value="">Seleccione una area</option>
                                     {
                                         this.state.areas.map((area, i) => {
                                            return(<option key ={i} value={area.area_type}>{area.area_type}</option> );

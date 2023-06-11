@@ -2,12 +2,13 @@ import React, {Component} from 'react';
 import Slider from '../BasePageComponents/Slider';
 import axios from 'axios';
 import BillTable from '../FunctionalComponents/BillTable';
+import GetData from '../FunctionalComponents/GetData';
 
 // Componente encargado de crear la Lista de Facturas  (Orlando)
 
 
 class BillList extends Component{
-    apiUrl= "http://localhost:3000/api";
+    apiUrl= process.env.REACT_APP_API_URL;
     
 
     constructor(props){
@@ -25,6 +26,8 @@ class BillList extends Component{
     
 
     getBills = ()=>{
+        
+        
         axios.get(`${this.apiUrl}/bills?start_date=${this.state.dateStart}&end_date=${this.state.dateEnd}`, {
             headers: {
                 'Accept': 'application/json', 
@@ -35,6 +38,7 @@ class BillList extends Component{
                 bills: res.data,
                 status: 'success'
             });
+            this.refresh();
     
         }).catch(error => {
             // Manejar el error
@@ -42,6 +46,37 @@ class BillList extends Component{
           });
          
     }
+
+    setData(data){
+        console.log('desde el setData');
+        
+        console.log(this.state.isLoading);
+        console.log(data);
+        this.refresh();
+        this.setState({bills: data});
+        
+        
+    }
+
+
+     // Antes de que se monte
+     componentDidMount =async() =>{
+        
+        this.setState({ isLoading: true });
+        this.getDate();
+        
+        
+        
+    }
+
+    refresh= ()=>{
+        setTimeout(() => { 
+            this.setState({ isLoading: false });
+        }, 400);
+    }
+    
+
+
 
     getDate=()=>{
         // Obtiene la hora actual
@@ -59,19 +94,7 @@ class BillList extends Component{
         this.setState({dateStart:`${year}-${month.toString().padStart(2, '0')}-01`});
         this.setState({dateEnd:`${year}-${month.toString().padStart(2, '0')}-${day}`});
     }
-    // Antes de que se monte
-    componentDidMount =async() =>{
-        
-        this.getDate();
-        setTimeout(() => {
-            this.getBills();
-        }, 200); 
-        
-        setTimeout(() => {
-            this.setState({ isLoading: false });
-        }, 200); 
-        
-    }
+   
 
     
 
@@ -92,20 +115,19 @@ class BillList extends Component{
          
     }
 
-    refresh=()=>{
-        setTimeout(() => { 
-            this.setState({ isLoading: false });
-        }, 400);
-    }
-    
+   
 
     render(){
         
         if(this.state.isLoading===true){
             this.getBills();
-            return(<h1 className='subheader'> Cargando...</h1>);
             
-            
+            return(
+                    <div>
+                      
+                        <h1 className='subheader'> Cargando...</h1>
+                    </div>
+            );
 
         }
         

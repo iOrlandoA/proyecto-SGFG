@@ -3,7 +3,7 @@ import { NavLink } from 'react-router-dom';
 import axios from 'axios';
 // Componente Base en el cual Cargar HTML 
 class BtnConfirm extends Component{
-    apiUrl= "http://localhost:3000/api";
+    apiUrl= process.env.REACT_APP_API_URL;
 
 
     handleConfirmation = () => {

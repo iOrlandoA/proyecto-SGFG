@@ -7,13 +7,13 @@ class SideBar extends Component{
 
 
     state={
-        voucher:0,
+        bill_ref:0,
         bill: {},
         status: ''
     }
 
     getBill = ()=>{
-        axios.get(`${this.apiUrl}/bills?voucher=${this.state.voucher}`, {
+        axios.get(`${this.apiUrl}/bills?bill_ref=${this.state.bill_ref}`, {
             headers: {
                 'Accept': 'application/json', 
             }
@@ -34,9 +34,9 @@ class SideBar extends Component{
 
 
     // Cambia cuando se cambia el Comprobante
-    handleVoucherChange = (event) => {
+    handleBillRefChange = (event) => {
         if (!isNaN(event.target.value)=== true){
-            this.setState({voucher:event.target.value});
+            this.setState({bill_ref:event.target.value});
         }    
     }
 
@@ -50,7 +50,7 @@ class SideBar extends Component{
                         <h3>Buscador</h3>
                         <p>Encuentra la Factura que buscas</p>
                         <form action="">
-                            <input type="text" value={this.state.voucher}  name="search" onChange={this.handleVoucherChange}/>
+                            <input type="text" value={this.state.bill_ref}  name="search" onChange={this.handleBillRefChange}/>
                             <input type="button" value="Buscar" className="btn btn-success" onClick={this.getBill}/> 
                         </form>
                         
