@@ -1,15 +1,14 @@
-import React,{useState, useEffect} from "react";
+import React,{useEffect} from "react";
 import axios from "axios";
 
-function GetData(props){
+function GetData({req, setData}){
 
     const apiUrl= process.env.REACT_APP_API_URL;
 
-    const [data, setData] = useState([]);
 
 
     useEffect(()=>{
-        axios.get(`${apiUrl}${props.req}`, {
+        axios.get(`${apiUrl}${req}`, {
             headers: {
                 'Accept': 'application/json', 
             }
@@ -20,9 +19,9 @@ function GetData(props){
             // Manejar el error
             console.error(error);
           });
-    },[]);
+    }, [apiUrl, req, setData]);
 
-    return data;
+    return null;
 
 }
 
