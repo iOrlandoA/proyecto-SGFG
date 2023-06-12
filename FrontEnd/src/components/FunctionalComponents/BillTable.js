@@ -1,64 +1,45 @@
-import React, {Component} from 'react';
+import React, { useEffect } from 'react';
 import BillOnList from '../FunctionalComponents/BillOnList';
-// Componente Base en el cual Cargar HTML 
-class BillTable extends Component{
 
+const BillTable = ({ bills }) => {
+  
+    useEffect(() => {
+   
+  }, []);
 
-    generateList = ()  =>{
-        
-        try {
-            return this.props.bills.map((bill, i) => {
-                return (
-                    //Llama al componente que genera cada fila (Manda Key y Factura)
-                    <BillOnList 
-                        key= {i}
-                        bill= {bill}
-                        listChange= {this.listChange}
-                    />
-                );
-            });
-        } catch (error) {
-            console.error('Error:', error.message);
-        }
+  const listChange = (datos) => {
+    console.log(datos);
+  };
+
+  const generateList = () => {
+    try {
+      return bills.map((bill, i) => (
+        <BillOnList key={i} bill={bill} listChange={listChange} />
+      ));
+    } catch (error) {
+      console.error('Error:', error.message);
     }
+  };
 
-    listChange= (datos) =>{ //Mandar Factura en Put
-        console.log(datos);
-    }
+  return (
+    <div id='list'>
+      <table id='table'>
+        <thead>
+          <tr>
+            <th>Numero Factura</th>
+            <th>Proveedor/Cliente</th>
+            <th>Monto Total</th>
+            <th>Area</th>
+            <th>Fecha Creación</th>
+            <th>Fecha Expiración</th>
+            <th>Descripción</th>
+          </tr>
+        </thead>
 
-    componentDidMount= ()=>{
+        {generateList()}
+      </table>
+    </div>
+  );
+};
 
-    }
-
-    
-    render(){
-        return(
-            
-            <div id='list'>
-                {/*Parte de Titulos de la Tabla*/}      
-                <table id="table" >
-                <thead>
-                    <tr>
-                        
-                        <th>Numero Factura</th>
-                        <th>Proveedor/Cliente </th>
-                        <th>Monto Total</th>
-                        <th>Area </th>
-                        <th>Fecha Creación</th>
-                        <th>Fecha Expiración </th>
-                        <th>Descripción</th>
-                    </tr>
-                </thead>
-
-                {/*Aqui se llama al Metodo que Genera la Lista*/}
-                {this.generateList()}
-
-                </table>
-
-            </div>
-            
-
-        );
-    }
-}
 export default BillTable;

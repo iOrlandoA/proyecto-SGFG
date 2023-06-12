@@ -129,6 +129,10 @@ function BillMacker (){
         }   
         
     }
+
+
+
+
     //No envía Nada y borra todo
     const noSend=()=>{
         setGoSend(false);
@@ -152,6 +156,7 @@ function BillMacker (){
     useEffect( ()=>{
         setGoSend(false);
         setIsLoading(true);
+
     },[]);
 
 
@@ -245,7 +250,7 @@ function BillMacker (){
                     {goSend === false ?
                         <div>
                             <div className="clearfix"></div>
-                            <input type="button" value="Guardar" className="btn btn-success" onClick={send}/>  
+                            <input type="button" value="Guardar" className="btn btn-success" onClick={send} />  
                             <NavLink to="/home" className="btn btn-cancel"  >Cancelar</NavLink> 
                         </div>
                     :
