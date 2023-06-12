@@ -39,10 +39,10 @@ class BillTable extends Component{
                 <table id="table" >
                 <thead>
                     <tr>
-                        <th>ID Factura</th>
-                        <th>Comprobante</th>
-                        <th>Nombre </th>
-                        <th>Precio</th>
+                        
+                        <th>Numero Factura</th>
+                        <th>Proveedor/Cliente </th>
+                        <th>Monto Total</th>
                         <th>Area </th>
                         <th>Fecha Creación</th>
                         <th>Fecha Expiración </th>

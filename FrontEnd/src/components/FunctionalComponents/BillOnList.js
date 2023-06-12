@@ -44,9 +44,6 @@ class BillOnList extends Component{
             <tbody>   
                 {/*Crea la fila con los Datos enviados por Props*/}
                 <tr>
-                    <td>
-                        {this.state.bill.id}
-                    </td>
                     
                     <td>
                         {this.state.bill.bill_ref}
