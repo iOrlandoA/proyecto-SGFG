@@ -1,4 +1,4 @@
-import React, {Component, useEffect, useState} from 'react';
+import React, { useEffect, useState} from 'react';
 import Slider from '../BasePageComponents/Slider';
 import SideBar from '../BasePageComponents/SideBar';
 import arrowDown from '../../assets/images/icons/arrowDown.svg'; 
@@ -87,6 +87,7 @@ function Home  (){
     useEffect(()=>{
         outcomeCalc();
         incomeCalc();
+        
     },[]);
     
 
