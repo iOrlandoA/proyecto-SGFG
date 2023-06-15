@@ -12,7 +12,8 @@ import NotFound from "./BasePageComponents/NotFound";
 import BillMacker from "./MenuComponents/BillMacker";
 import BillList from "./MenuComponents/BillList";
 import Home from "./MenuComponents/Home";
-
+import BillSearch from "./FunctionalComponents/BillSearch";
+import AreaController from "./FunctionalComponents/AreaController";
 
 
 
@@ -31,11 +32,12 @@ class MyRouter extends Component{
 
                     {/*Configuración de Rutas y Paginas*/}
                     <Routes>
-                        <Route exact path="/" element={<Home/>}/>  {/*Aqui va el Home */}
-                        <Route exact path="/home" element={<Home/>}/>  {/*Aqui va el Home */}
+                        <Route exact path="/" element={<Home/>}/>  
+                        <Route exact path="/home" element={<Home/>}/> 
                         <Route exact path="/crear-facturas" element={<BillMacker/>}/>
                         <Route exact path="/lista-facturas" element={<BillList/>}/>
-                        
+                        <Route exact path="/search" element={<BillSearch/>}/>
+                        <Route exact path="/area-controller" element={<AreaController/>}/>
 
                         <Route path="*" element={<NotFound/>}/>
                     

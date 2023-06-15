@@ -8,7 +8,7 @@ class Slider extends Component{
             <div id="slider" className= {this.props.size}>
                 <h1>{this.props.title}</h1>
                 {this.props.btn &&
-                    <NavLink to="#" className="btn-white">{this.props.btn}</NavLink> 
+                    <NavLink to={`${this.props.btnUrl}`} className="btn-white">{this.props.btn}</NavLink> 
                 }
 
                 

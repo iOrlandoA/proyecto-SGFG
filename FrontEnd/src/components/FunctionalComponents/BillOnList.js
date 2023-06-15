@@ -11,7 +11,7 @@ class BillOnList extends Component{
         this.state ={
             bill:{
                 id: 0,
-                voucher: 0,
+                bill_ref: 0,
                 name: '',
                 price: 0,
                 area: '',
@@ -44,12 +44,9 @@ class BillOnList extends Component{
             <tbody>   
                 {/*Crea la fila con los Datos enviados por Props*/}
                 <tr>
-                    <td>
-                        {this.state.bill.id}
-                    </td>
                     
                     <td>
-                        {this.state.bill.voucher}
+                        {this.state.bill.bill_ref}
                     </td>
                     
                     <td>
