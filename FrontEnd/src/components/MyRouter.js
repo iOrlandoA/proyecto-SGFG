@@ -13,7 +13,7 @@ import BillMacker from "./MenuComponents/BillMacker";
 import BillList from "./MenuComponents/BillList";
 import Home from "./MenuComponents/Home";
 import BillSearch from "./FunctionalComponents/BillSearch";
-
+import AreaController from "./FunctionalComponents/AreaController";
 
 
 
@@ -37,6 +37,7 @@ class MyRouter extends Component{
                         <Route exact path="/crear-facturas" element={<BillMacker/>}/>
                         <Route exact path="/lista-facturas" element={<BillList/>}/>
                         <Route exact path="/search" element={<BillSearch/>}/>
+                        <Route exact path="/area-controller" element={<AreaController/>}/>
 
                         <Route path="*" element={<NotFound/>}/>
                     

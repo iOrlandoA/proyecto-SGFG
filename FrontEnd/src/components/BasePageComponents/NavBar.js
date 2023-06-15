@@ -28,7 +28,7 @@ class NavBar extends Component{
 
                     
                     <li>
-                        <NavLink to="#"  >Menu Reportes</NavLink>
+                        <NavLink to="/area-controller"  >Prueba</NavLink>
                     </li>
 
                     <li>

@@ -11,8 +11,7 @@ import GetData from '../FunctionalComponents/GetData';
 
 function BillMacker (){
    
-    
-    
+
     //Genera objetos state cambiantes 
    
     const [bill, setBill]= useState({
@@ -139,7 +138,7 @@ function BillMacker (){
         setBill({  
             name : '',
             price : '',
-            area : '',
+            area :'',
             description : '',
             date_created : '',
             date_expired : '', 
@@ -212,7 +211,7 @@ function BillMacker (){
                             <option value="">Seleccione una area</option>
                             {
                                 areas.map((area, i) => {
-                                    return(<option key ={i} value={area.area_type}>{area.area_type}</option> );
+                                    return(<option key ={i} value={area.name}>{area.name}</option> );
                                 })
                             }
                         </select> 
