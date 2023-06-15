@@ -9,7 +9,17 @@ class BillOnList extends Component{
         super(props);
 
         this.state ={
-            bill:{},
+            bill:{
+                id: 0,
+                bill_ref: 0,
+                name: '',
+                price: 0,
+                area: '',
+                date_created: '',
+                date_expired: '',
+                description: ''
+
+            },
             estado : 0
         }   
     }
@@ -24,6 +34,7 @@ class BillOnList extends Component{
     
     componentDidMount=()=>{
         this.setState({bill:this.props.bill});
+        
     }
 
 
@@ -33,12 +44,9 @@ class BillOnList extends Component{
             <tbody>   
                 {/*Crea la fila con los Datos enviados por Props*/}
                 <tr>
-                    <td>
-                        {this.state.bill.id}
-                    </td>
                     
                     <td>
-                        {this.state.bill.voucher}
+                        {this.state.bill.bill_ref}
                     </td>
                     
                     <td>

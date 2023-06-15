@@ -48,7 +48,7 @@ body {
 }  
 
 #dash-content:hover{
-  box-shadow: 1px 1px 1px 1px #757575;
+  box-shadow: 0px 0px 5px #ccc inset;
 }
 
 .dashboard label{
@@ -77,6 +77,15 @@ body {
   padding-top: 2px;
 
 }
+
+
+#nav-img{
+  float: left;
+  height: 25px;
+  padding-left: 5px;
+  padding-right: 5px;
+  padding-top: 30px;
+} 
 
 .diff-porcentual span{
   float: right;
@@ -120,14 +129,16 @@ body {
       margin-right: auto;
       border-collapse: collapse;
       text-align: left;
+      
     }
     th{
       background-color: black;
       color: whitesmoke;
+      
     }
 
     td,th{
-      border: 2px solid black;
+      border: 2px solid #444;
       padding-left: 10px;
       padding-right: 10px;
       padding-top: 10px;
@@ -154,7 +165,7 @@ body {
     }
 
     .bill-list #list{
-      min-height: 600px; 
+      min-height: 300px; 
     }
 
 
@@ -303,11 +314,11 @@ body {
 #content{
   width: 75%;
   float: left;
-  min-height: 800px;
+  min-height: 600px;
   margin-right: 25px;
 }
 #sidebar{
-  width: 25%;
+  width: 15%;
   float: left;
 }
 
@@ -371,6 +382,15 @@ body {
   background: black;
 }
 
+.btn-delete{
+  margin: 20px;
+  display: inline-block;
+}
+
+.btn-delete:hover{
+  background: rgb(163, 24, 15);
+}
+
 #validation-error{
   display: block;
   float: left;
@@ -410,15 +430,53 @@ textarea{
 }
 
 .form-group label{
-  padding-right: 30%;
+  padding-right: 10%;
 }
+
+.form-group span{
+  float: left;
+}
+
+
+
 .select{
   margin-top: 15px;
   margin-bottom: 10px;
-  float: left;
-  padding-right: 100%;
   
 }
+
+
+.select select{
+  margin-right: 100%;
+}
+
+
+.group-select{
+  margin-top: 15px;
+  margin-bottom: 25px;
+  display: block;
+}
+
+.first-select {
+  display: inline-block;
+}
+.second-select {
+  display: inline-block;
+}
+.btn-select{
+  display: inline-block;
+  padding-top: 10px;
+  padding-right: 10%;
+}
+.btn-select img{
+  height: 25px;
+}
+
+.form-group select{
+  display: inline-block;
+  
+}
+
 input[type="text"]:focus, textarea:focus{
   box-shadow: 0px 0px 5px #ccc inset;
 }
@@ -464,26 +522,23 @@ input[type="text"]:focus, textarea:focus{
 
 }
 
+.mid-form img{
+  height: 20px;
+}
+
 
 
 /*RESPONSIVE
 Desde la altura 0px hasta 1370px h*/
 
-@media (max-width:1605px){
 
-  #sidebar{
-    float: right;
-    margin-left: 30px;
-    margin-right: -120px;
-  }
-}
 
 
 
 @media (max-width:1370px){
 
   .center{
-      width: 85%;       
+      width: 95%;       
   }
 
   #sidebar{
@@ -532,7 +587,10 @@ Desde la altura 0px hasta 1370px h*/
       
   }
 
-  
+
+  #nav-img{
+    display: none;
+  }
 
   
 
@@ -540,11 +598,6 @@ Desde la altura 0px hasta 1370px h*/
       padding-top: 115px;
       font-size: 25px;
   }
-
-  .mid-form{
-      width: 70%;
-  }
-
 
 }
 

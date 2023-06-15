@@ -1,143 +1,97 @@
-import React, {Component} from 'react';
+import React, { useState, useEffect } from 'react';
 import Slider from '../BasePageComponents/Slider';
-import axios from 'axios';
 import BillTable from '../FunctionalComponents/BillTable';
+import GetData from '../FunctionalComponents/GetData';
 
-// Componente encargado de crear la Lista de Facturas  (Orlando)
+const BillList = () => {
 
+  // Generate States for all variables
+  const [bills, setBills] = useState([{}]);
+  const [dateStart, setDateStart] = useState('');
+  const [dateEnd, setDateEnd] = useState('');
+  const [isLoading, setIsLoading] = useState(true);
 
-class BillList extends Component{
-    apiUrl= "http://localhost:3000/api";
-    
+   // Usage function for get data from Api 
+  const setData = (data) => {
+    setBills(data);
+    refresh();
+  };
 
-    constructor(props){
-        super(props);
-        this.state ={
-            bills:[{}],
-            dateStart : '1999-01-20',
-            dateEnd : '1999-01-20',
-            isLoading: true
-    
-    
-        }
-    }
-   
-    
+  //Give a chance for refresh the page
+  const refresh = () => {
+    setTimeout(() => {
+      setIsLoading(false);
+    }, 400);
+  };
 
-    getBills = ()=>{
-        axios.get(`${this.apiUrl}/bills`, {
-            headers: {
-                'Accept': 'application/json', 
-            }
-        }).then(res =>{
+  // Get the date of the first day of month and the end day of month
+  const getDate = () => {
+    const today = new Date();
+    const month = today.getMonth() + 1;
+    const year = today.getFullYear();
 
-            this.setState({
-                bills: res.data,
-                status: 'success'
-            });
-    
-        }).catch(error => {
-            // Manejar el error
-            console.error(error);
-          });
-         
-    }
+    const x = new Date(today.getFullYear(), today.getMonth() + 1, 1);
+    const y = new Date(x.getTime() - 1);
+    const day = y.getDate();
 
-    getDate=()=>{
-        // Obtiene la hora actual
-        var today= new Date();
-        var month = today.getMonth() + 1; 
-        var year = today.getFullYear();
-        
-        // Obtener el primer día del próximo mes
-        const x = new Date(today.getFullYear(), today.getMonth() + 1, 1);
+    setDateStart(`${year}-${month.toString().padStart(2, '0')}-01`);
+    setDateEnd(`${year}-${month.toString().padStart(2, '0')}-${day}`);
+  };
 
-        // Restar un día al primer día del mes siguiente
-        const y = new Date(x.getTime() - 1);
-        var day= y.getDate();
-        // Guardar el estado
-        this.setState({dateStart:`${year}-${month.toString().padStart(2, '0')}-01`});
-        this.setState({dateEnd:`${year}-${month.toString().padStart(2, '0')}-${day}`});
-    }
-    // Antes de que se monte
-    componentDidMount =async() =>{
-        this.getBills();
-        this.getDate();
-        
-        
+  // Hanlder for the change of DateStart
+  const handleDateStartChange = (event) => {
+    setIsLoading(true);
+    setDateStart(event.target.value);
+    refresh();
+  };
 
-        setTimeout(() => {
-            this.setState({ isLoading: false });
-        }, 1000); 
-        
-    }
+   // Hanlder for the change of DateEnd
+  const handleDateEndChange = (event) => {
+    setIsLoading(true);
+    setDateEnd(event.target.value);
+    refresh();
+  };
 
-    
+  //Use Effect start the Date with the function
+  useEffect(() => {
+    setIsLoading(true);
+    getDate();
+  }, []);
 
-    // Cambia cuando se selecciona una Fecha Inicio Nueva
-    handleDateStartChange = (event) => {
-        this.setState({dateStart : event.target.value});
-        console.log(this.state.dateStart);
-    }
+  
 
-    // Cambia cuando se selecciona una Fecha Fin Nueva
-    handleDateEndChange = (event) => {
-        
-        this.setState({dateEnd:event.target.value});
-        
-    }
-    
+  // Return the loading state and gets the API data
+  if (isLoading) {
+    return (
+      <div>
+        <GetData req={`/bills?start_date=${dateStart}&end_date=${dateEnd}`} setData={setData} />
+        <h1 className="subheader">Cargando...</h1>
+      </div>
+    );
+  }
+  // Return the List of Bills
+  return (
+    <div>
+      <Slider title="Lista Facturas" size="slider-small" />
 
-    render(){
-        
-        if(this.state.isLoading===true){
-            return(<h1 className='subheader'> Cargando...</h1>);
-
-        }
-        
-        return(
+        <div className="center">
             
-            <div >
+            <h2 className="subheader"></h2>
+            <div className="bill-list" id="list">
+                <label>Fecha Inicio</label>
+                <input type="date" id="dateStart" value={dateStart} onChange={handleDateStartChange} />
+                <label>Fecha Fin</label>
+                <input type="date" value={dateEnd} onChange={handleDateEndChange} />
+                <div className="clearfix"></div>
+                {/*Call component BillTable generate the FullTable*/}
+                <BillTable bills={bills} /> 
 
-                {/*Se introduce el Slider en pequeño*/}
-                <Slider
-                    title="Lista Facturas"
-                    size="slider-small"
-                />
-                <div className='center' >
-                    <h2 className='subheader'></h2>
-
-                    {/*Se muestran inputs de Fechas*/}
-                    <div className="bill-list"  id='list'>
-                        <label>Fecha Inicio</label>
-                        <input
-                            type="date" 
-                            value={this.state.dateStart}
-                            onChange={this.handleDateStartChange}
-                        />
-                    
-                        <label>Fecha Fin</label>
-                        <input 
-                            type="date"
-                            value={this.state.dateEnd}
-                            onChange={this.handleDateEndChange}
-                        />
-                        
-                        <div className="clearfix"></div> 
-                        
-                        <BillTable
-                            bills= {this.state.bills}
-                        />
-                    {/*Fin del Div de Bill List*/}   
-                    </div>
-
-                {/*Fin del Div de Center*/}    
-                </div>
-                
             </div>
-            
-        );
-        
-    }
-}
+      
+        </div>
+
+    </div> //End of First div
+  );
+};
+
 export default BillList;
