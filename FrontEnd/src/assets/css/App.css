@@ -430,7 +430,7 @@ textarea{
 }
 
 .form-group label{
-  padding-right: 30%;
+  padding-right: 10%;
 }
 
 .form-group span{
@@ -453,21 +453,25 @@ textarea{
 
 .group-select{
   margin-top: 15px;
-  margin-bottom: 10px;
+  margin-bottom: 25px;
   display: block;
 }
 
 .first-select {
   display: inline-block;
-  
-
 }
-
 .second-select {
   display: inline-block;
- 
-
 }
+.btn-select{
+  display: inline-block;
+  padding-top: 10px;
+  padding-right: 10%;
+}
+.btn-select img{
+  height: 25px;
+}
+
 .form-group select{
   display: inline-block;
   
@@ -530,7 +534,7 @@ Desde la altura 0px hasta 1370px h*/
 @media (max-width:1370px){
 
   .center{
-      width: 85%;       
+      width: 95%;       
   }
 
   #sidebar{
@@ -579,7 +583,10 @@ Desde la altura 0px hasta 1370px h*/
       
   }
 
-  
+
+  #nav-img{
+    display: none;
+  }
 
   
 
@@ -587,11 +594,6 @@ Desde la altura 0px hasta 1370px h*/
       padding-top: 115px;
       font-size: 25px;
   }
-
-  .mid-form{
-      width: 70%;
-  }
-
 
 }
 

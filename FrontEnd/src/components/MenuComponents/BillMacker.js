@@ -4,6 +4,7 @@ import Slider from '../BasePageComponents/Slider';
 import { NavLink } from 'react-router-dom';
 import BtnConfirm from '../FunctionalComponents/BtnConfirm';
 import GetData from '../FunctionalComponents/GetData';
+import moreOptions from '../../assets/images/icons/moreOptions.svg';
 
 
 const AREA_TYPE_INCOME = 'Ingreso';
@@ -208,7 +209,11 @@ function BillMacker (){
                     </div>
 
                     <div className="form-group group-select">
-
+                        <label>Area de Facturación</label>
+                        <div className='btn-select'>
+                                <NavLink to="/area-controller" activeclassname="active"><img src={moreOptions}></img></NavLink>
+                        </div>
+                        <div className='clearfix'></div>
                         <div className='first-select '> 
 
                             <label>Gastos</label>
@@ -236,6 +241,7 @@ function BillMacker (){
                                 }
                             </select> 
                         </div> 
+                        
                     
                         
                     </div> {/*Fin del Div del Select Group*/}

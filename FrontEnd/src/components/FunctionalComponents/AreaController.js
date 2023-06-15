@@ -214,7 +214,7 @@ function AreaController (){
                                 <div className="clearfix"></div>
                                 <input type="button" value={DO_SAVE} className="btn btn-success" onClick={send} />  
                                 <input type="button" value={DO_DELETE} className="btn btn-delete" onClick={send} />  
-                                <NavLink to="/home" className="btn btn-cancel"  >Cancelar</NavLink> 
+                                <NavLink to="/crear-facturas" className="btn btn-cancel"  >Cancelar</NavLink> 
                             </div>
                         ) 
                     }
