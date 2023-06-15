@@ -6,6 +6,8 @@ import BtnConfirm from '../FunctionalComponents/BtnConfirm';
 import GetData from '../FunctionalComponents/GetData';
 
 
+const AREA_TYPE_INCOME = 'Ingreso';
+const AREA_TYPE_OUTCOME = 'Gasto';
 
 // Formulario con los campos para crear una factura (Orlando)
 
@@ -16,7 +18,7 @@ function BillMacker (){
     const [bill, setBill]= useState({
         name : '',
         price : '',
-        area : '',
+        area_id : '',
         description : '',
         date_created : '',
         date_expired : '', 
@@ -61,8 +63,9 @@ function BillMacker (){
 
     // Cambia cuando se selecciona una Area Nueva
     const handleAreaChange = (event) => {
+        console.log (event.target.value);
         setBill ( prevBill => {
-            return {...prevBill, area : event.target.value }
+            return {...prevBill, area_id : event.target.value }
         } );
     }
 
@@ -204,18 +207,39 @@ function BillMacker (){
                         
                     </div>
 
-                    <div className="form-group select">
+                    <div className="form-group group-select">
+
+                        <div className='first-select '> 
+
+                            <label>Gastos</label>
+                            <select value = {bill.area} onChange={handleAreaChange} >
+                                <option value="">Seleccione una area</option>
+                                {
+                                    areas.map((area, i) => {
+                                        if(area.area_type===AREA_TYPE_OUTCOME)
+                                        return(<option key ={i} value={area.id}>{area.name}</option> );
+                                    })
+                                }
+                            </select>  
+                        </div>
+
+                        <div className='second-select '>   
                         
-                        <select value = {bill.area} onChange={handleAreaChange} >
-                            <option value="">Seleccione una area</option>
-                            {
-                                areas.map((area, i) => {
-                                    return(<option key ={i} value={area.name}>{area.name}</option> );
-                                })
-                            }
-                        </select> 
+                            <label>Ingresos</label>
+                            <select value = {bill.area} onChange={handleAreaChange} >
+                                <option value="">Seleccione una area</option>
+                                {
+                                    areas.map((area, i) => {
+                                        if(area.area_type===AREA_TYPE_INCOME)
+                                        return(<option key ={i} value={area.id}>{area.name}</option> );
+                                    })
+                                }
+                            </select> 
+                        </div> 
+                    
                         
-                    </div>
+                    </div> {/*Fin del Div del Select Group*/}
+                    
                     
                     <div className="form-group">
                         

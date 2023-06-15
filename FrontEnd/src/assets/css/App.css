@@ -382,6 +382,15 @@ body {
   background: black;
 }
 
+.btn-delete{
+  margin: 20px;
+  display: inline-block;
+}
+
+.btn-delete:hover{
+  background: rgb(163, 24, 15);
+}
+
 #validation-error{
   display: block;
   float: left;
@@ -428,13 +437,42 @@ textarea{
   float: left;
 }
 
+
+
 .select{
   margin-top: 15px;
   margin-bottom: 10px;
-  float: left;
-  padding-right: 100%;
   
 }
+
+
+.select select{
+  margin-right: 100%;
+}
+
+
+.group-select{
+  margin-top: 15px;
+  margin-bottom: 10px;
+  display: block;
+}
+
+.first-select {
+  display: inline-block;
+  
+
+}
+
+.second-select {
+  display: inline-block;
+ 
+
+}
+.form-group select{
+  display: inline-block;
+  
+}
+
 input[type="text"]:focus, textarea:focus{
   box-shadow: 0px 0px 5px #ccc inset;
 }
