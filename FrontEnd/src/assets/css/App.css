@@ -224,6 +224,8 @@ body {
     }
 
     .bill-list img{
+      padding-top: 20px;
+      cursor: pointer;
       height: 30px;
       margin-left: 20px;
     }

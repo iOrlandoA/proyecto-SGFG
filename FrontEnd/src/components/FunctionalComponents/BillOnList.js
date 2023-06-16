@@ -1,6 +1,6 @@
 import React, {useState, useEffect} from 'react';
-import saveImg from '../../assets/images/icons/save.png';
-import payImg from '../../assets/images/icons/pay.png';
+import saveImg from '../../assets/images/icons/save.svg';
+import payImg from '../../assets/images/icons/pay.svg';
 
 // Componente Encargado de generar un elemento en la lista (Orlando)
 
