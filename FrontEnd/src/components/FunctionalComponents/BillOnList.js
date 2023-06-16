@@ -2,6 +2,35 @@ import React, {Component} from 'react';
 
 // Componente Encargado de generar un elemento en la lista (Orlando)
 
+function BillOnList() {
+
+    //Genera objetos state cambiantes 
+   
+    const [bill, setBill]= useState({
+        name : '',
+        price : '',
+        area : '',
+        description : '',
+        date_created : '',
+        date_expired : '', 
+        bill_ref: ''
+    });
+    const [areas, setAreas]= useState([]);
+    const [goSend, setGoSend]= useState(false);
+    const [validationTest, setValidationTest]= useState([]);
+    const [isLoading, setIsLoading] = useState(false);
+
+    // Cambia cuando se cambia el nombre
+    const handleNameChange = (event) => {
+
+        setBill ( prevBill => {
+            return {...prevBill, name : event.target.value }
+        } );
+        
+    }
+
+}
+
 class BillOnList extends Component{
     
     //Construye el objeto factura con los props
@@ -25,11 +54,18 @@ class BillOnList extends Component{
     }
 
    
-    edit = (event) =>{
+    editDateExpired = (event) =>{
         const {bill}=this.state;
         bill.date_expired = event.target.value;
         this.setState({bill});
         this.props.listChange('Prueba'); //Se debería de enviar la nueva factura a actualizar                         
+    }
+
+    editBillRef = (event) => {
+        const {bill}=this.state;
+        bill.bill_ref = event.target.value;
+        this.setState({bill});
+        this.props.listChange('Prueba'); //Se debería de enviar la nueva factura a actualizar     
     }
     
     componentDidMount=()=>{
@@ -46,7 +82,7 @@ class BillOnList extends Component{
                 <tr>
                     
                     <td>
-                        {this.state.bill.bill_ref}
+                    <input type='number' value={this.state.bill.bill_ref} onChange={this.editBillRef}/> {this.state.bill.bill_ref}
                     </td>
                     
                     <td>

@@ -23,7 +23,7 @@ const BillTable = ({ bills }) => {
 
   return (
     <div id='list'>
-      <table id='table'>
+      <table id='table'> 
         <thead>
           <tr>
             <th>Numero Factura</th>
@@ -42,4 +42,4 @@ const BillTable = ({ bills }) => {
   );
 };
 
-export default BillTable;
+export default BillTable; 
