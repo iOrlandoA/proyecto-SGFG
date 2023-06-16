@@ -54,6 +54,10 @@ class BtnConfirm extends Component{
 
     handleCloseModal = () => {
         // Se regresa al Origen
+        if(this.props.origin==='noSend'){
+            this.props.noSend();
+        }
+
        return(
             <NavLink to= {this.props.origin}></NavLink>
 

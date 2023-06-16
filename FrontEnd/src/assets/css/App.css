@@ -17,7 +17,7 @@ body {
 }
 
 .center{
-  width: 75%;
+  width: 80%;
   margin: 0px auto;
 }
 
@@ -169,6 +169,45 @@ body {
     }
 
 
+    .edit{
+      display: block;
+    }
+    
+
+    .edit span{
+      display: inline-block;
+    }
+
+    .edit input[type="number"]{
+      display: inline-block;
+      width: 60px;
+      min-height: 30px;
+      margin-bottom: 5px;
+      transition: 300ms all;  
+      padding-right: 3px;
+    }
+
+    
+
+    .bill-list input[type="number"]{
+      display: inline-block;
+      width: 120px;
+      min-height: 30px;
+      margin-bottom: 5px;
+      transition: 300ms all;  
+      padding-right: 3px;
+    }
+
+    .bill-list input[type="text"]{
+      float: center;
+      width: 120px;
+      min-height: 30px;
+      padding: 3px;
+      margin-bottom: 5px;
+      transition: 300ms all;  
+      padding-right: 3px;
+    }
+
 
     .bill-list input[type="date"]{
       float: center;
@@ -182,6 +221,11 @@ body {
       text-align: auto;
       padding-right: 10%;
       padding-left: 10%;
+    }
+
+    .bill-list img{
+      height: 30px;
+      margin-left: 20px;
     }
 
 
