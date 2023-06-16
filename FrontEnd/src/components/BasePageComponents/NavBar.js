@@ -28,11 +28,11 @@ class NavBar extends Component{
 
                     
                     <li>
-                        <NavLink to="#"  >Menu Reportes</NavLink>
+                        <NavLink to="#"  >Prueba</NavLink>
                     </li>
 
                     <li>
-                        <NavLink to="/search" > <img id='nav-img'  src={search}  alt='search-img'></img>Search</NavLink>
+                        <NavLink to="/search" ><label>Search</label> <img id='nav-img'  src={search}  alt='search-img'></img></NavLink>
                     </li>
 
                 </ul>

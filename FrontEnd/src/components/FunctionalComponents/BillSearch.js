@@ -2,6 +2,7 @@ import React, { useState, useEffect , useContext, useRef} from 'react';
 import BillTable from '../FunctionalComponents/BillTable';
 import GetData from '../FunctionalComponents/GetData';
 import { SearchContext } from '../BasePageComponents/SideBar';
+import arrowDown from '../../assets/images/icons/arrowDown.svg'; 
 
 function BillSearch  ()  {
 
@@ -60,18 +61,23 @@ function BillSearch  ()  {
             <div className="center">
                 
                 <h2 className="subheader"></h2>
-                <div className="bill-list" id="list">
-                    {/*Call component BillTable generate the FullTable*/}
-                    <BillTable bills={bills} /> 
+                <div className="bill-list" id="list" >
 
-                    <div id="search" className="sidebar-item">
+                    <div id="search" className='mid-form'>
                         <h3>Buscador</h3>
                         <p>Encuentra la Factura que buscas</p>
+                        <p>Resultados Abajo</p> 
+                        <img src={arrowDown} alt='arrow-down'></img>
                         
                         <input type="text" ref={inputRef} value={billRef} name="search" onChange={handleBillRefChange} />
                         <input type="button" ref={inputRef}  value="Buscar" className="btn btn-success" onClick={()=>{setIsLoading(true)}} />
-                    
+                
                     </div>
+
+                    {/*Call component BillTable generate the FullTable*/}
+                    <BillTable bills={bills} /> 
+
+                    
 
                 </div>
 

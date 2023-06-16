@@ -4,21 +4,22 @@ import Slider from '../BasePageComponents/Slider';
 import { NavLink } from 'react-router-dom';
 import BtnConfirm from '../FunctionalComponents/BtnConfirm';
 import GetData from '../FunctionalComponents/GetData';
+import moreOptions from '../../assets/images/icons/moreOptions.svg';
 
 
+const AREA_TYPE_INCOME = 'Ingreso';
+const AREA_TYPE_OUTCOME = 'Gasto';
 
 // Formulario con los campos para crear una factura (Orlando)
 
 function BillMacker (){
    
-    
-    
     //Genera objetos state cambiantes 
    
     const [bill, setBill]= useState({
         name : '',
         price : '',
-        area : '',
+        area_id : '',
         description : '',
         date_created : '',
         date_expired : '', 
@@ -63,8 +64,9 @@ function BillMacker (){
 
     // Cambia cuando se selecciona una Area Nueva
     const handleAreaChange = (event) => {
+        console.log (event.target.value);
         setBill ( prevBill => {
-            return {...prevBill, area : event.target.value }
+            return {...prevBill, area_id : event.target.value }
         } );
     }
 
@@ -139,7 +141,7 @@ function BillMacker (){
         setBill({  
             name : '',
             price : '',
-            area : '',
+            area :'',
             description : '',
             date_created : '',
             date_expired : '', 
@@ -206,18 +208,44 @@ function BillMacker (){
                         
                     </div>
 
-                    <div className="form-group select">
+                    <div className="form-group group-select">
+                        <label>Area de Facturación</label>
+                        <div className='btn-select'>
+                                <NavLink to="/area-controller" activeclassname="active"><img src={moreOptions}></img></NavLink>
+                        </div>
+                        <div className='clearfix'></div>
+                        <div className='first-select '> 
+
+                            <label>Gastos</label>
+                            <select value = {bill.area} onChange={handleAreaChange} >
+                                <option value="">Seleccione una area</option>
+                                {
+                                    areas.map((area, i) => {
+                                        if(area.area_type===AREA_TYPE_OUTCOME)
+                                        return(<option key ={i} value={area.id}>{area.name}</option> );
+                                    })
+                                }
+                            </select>  
+                        </div>
+
+                        <div className='second-select '>   
                         
-                        <select value = {bill.area} onChange={handleAreaChange} >
-                            <option value="">Seleccione una area</option>
-                            {
-                                areas.map((area, i) => {
-                                    return(<option key ={i} value={area.area_type}>{area.area_type}</option> );
-                                })
-                            }
-                        </select> 
+                            <label>Ingresos</label>
+                            <select value = {bill.area} onChange={handleAreaChange} >
+                                <option value="">Seleccione una area</option>
+                                {
+                                    areas.map((area, i) => {
+                                        if(area.area_type===AREA_TYPE_INCOME)
+                                        return(<option key ={i} value={area.id}>{area.name}</option> );
+                                    })
+                                }
+                            </select> 
+                        </div> 
                         
-                    </div>
+                    
+                        
+                    </div> {/*Fin del Div del Select Group*/}
+                    
                     
                     <div className="form-group">
                         
