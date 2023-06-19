@@ -101,13 +101,16 @@ function AreaController (){
         setGoSend(false);
         setGoUpdate(false);
         setGoDelete(false);
+        setNameUpdated('');
         setArea({  
             id: '',
             name : '',
             type : '',
             
         });
-        setIsLoading(true);
+        setTimeout(() => {
+            setIsLoading(true);
+        }, 400);
     }
 
     useEffect(()=>{
