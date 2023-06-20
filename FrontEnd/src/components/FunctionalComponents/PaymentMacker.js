@@ -18,7 +18,8 @@ function PaymentMacker (){
         date_created : ''
     });
     const [bill, setBill]= useState({
-        payments: []
+        payments: [],
+        area:[]
     });
     const [goSend, setGoSend]= useState(false);
     const [validationTest, setValidationTest]= useState([]);
@@ -267,7 +268,7 @@ function PaymentMacker (){
                             </td>
                             
                             <td>
-                                {bill.area}
+                                {bill.area.area_type}-{bill.area.name}
                             </td>
                             
                             <td>
@@ -323,7 +324,7 @@ function PaymentMacker (){
 
         {/*End Div BillMacker*/}
         </div> 
-            
+            <SideBar/>
         </div>
     );                            
 

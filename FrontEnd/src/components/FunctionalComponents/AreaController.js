@@ -17,7 +17,8 @@ function AreaController (){
     const [area, setArea]= useState({
         id: '',
         name : '',
-        area_type : '' // 0 InCome 1 OutCome
+        area_type : '',
+        visible : true
     });
     const [areas, setAreas]= useState([ ]);
     const [goSend, setGoSend]= useState(false);
@@ -89,7 +90,13 @@ function AreaController (){
             }
             
             if (event.target.value === DO_DELETE){
-                setGoDelete(true);
+                if(area.visible===true){
+                    setArea ( prevArea => {
+                        return {...prevArea, visible : false }
+                    } );
+                    setGoUpdate(true);
+                }else{setGoDelete(true);}
+                
                 
             }           
         }       
@@ -150,7 +157,7 @@ function AreaController (){
                             <option value="">Seleccione una area</option>
                             {
                                 areas.map((area, i) => {
-                                    return(<option value={i}>{area.name}</option> );
+                                    return(<option value={i}>{area.area_type} : {area.name} : {`${area.visible}`}</option> );
                                 })
                             }
                         </select> 

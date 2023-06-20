@@ -100,7 +100,9 @@ function BillOnList({billP, listChange}) {
                 </td>
                 
                 <td>
-                    {bill.area}
+                    <p>{bill.area.area_type}: 
+                    <br/>
+                    {bill.area.name}</p>
                 </td>
                 
                 <td>

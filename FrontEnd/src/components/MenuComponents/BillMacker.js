@@ -141,7 +141,7 @@ function BillMacker (){
         setBill({  
             name : '',
             price : '',
-            area :'',
+            area_id :'',
             description : '',
             date_created : '',
             date_expired : '', 
@@ -172,7 +172,7 @@ function BillMacker (){
     if (isLoading) {
         return (
             <div>
-            <GetData req={'/areas'} setData={setData} />
+            <GetData req={'/areas/visible'} setData={setData} />
             <h1 className="subheader">Cargando...</h1>
             </div>
         );
