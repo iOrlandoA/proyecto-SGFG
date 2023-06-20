@@ -211,7 +211,7 @@ function BillMacker (){
                     <div className="form-group group-select">
                         <label>Area de Facturación</label>
                         <div className='btn-select'>
-                                <NavLink to="/area-controller" activeclassname="active"><img src={moreOptions}></img></NavLink>
+                                <NavLink to="/area-controller" ><img src={moreOptions}></img></NavLink>
                         </div>
                         <div className='clearfix'></div>
                         <div className='first-select '> 

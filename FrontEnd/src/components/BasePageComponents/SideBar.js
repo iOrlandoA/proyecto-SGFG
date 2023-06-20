@@ -1,20 +1,10 @@
 import React, { useState } from 'react';
-import BillSearch from '../FunctionalComponents/BillSearch';
-
-export const SearchContext = React.createContext(); 
-
+import { NavLink } from 'react-router-dom';
 
 function SideBar ()  {
   const [billRef, setBillRef] = useState('');
-  const [goSend, setGoSend] = useState(false);
   
   
-  const validate = () => {
-    if (billRef !== '') {  
-        setGoSend(true);
-        
-    }
-  }
 
   const handleBillRefChange = (event) => {
     if (!isNaN(event.target.value) === true) {
@@ -22,16 +12,7 @@ function SideBar ()  {
     }
   };
 
-  if(goSend===true){
-    return(
-            
-        <SearchContext.Provider value={billRef}>
-            <div className="clearfix"></div>
-            <BillSearch/>       
-        </SearchContext.Provider>
-        
-    ); 
-  }
+ 
  
 
   return (
@@ -42,8 +23,10 @@ function SideBar ()  {
             <p>Encuentra la Factura que buscas</p>
           
             <input type="text" value={billRef} name="search" onChange={handleBillRefChange} />
-            <input type="button" value="Buscar" className="btn btn-success" onClick={validate}/>
-          
+            {billRef!=='' &&
+              <NavLink to={`/search/${billRef}`} className="btn btn-success" >Buscar</NavLink>
+            }
+           
         </div>
       </aside>
       <div className="clearfix"></div>

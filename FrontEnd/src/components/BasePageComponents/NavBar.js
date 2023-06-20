@@ -32,7 +32,7 @@ class NavBar extends Component{
                     </li>
 
                     <li>
-                        <NavLink to="/search" ><label>Search</label> <img id='nav-img'  src={search}  alt='search-img'></img></NavLink>
+                        <NavLink to="/search/Search " ><label>Search</label> <img id='nav-img'  src={search}  alt='search-img'></img></NavLink>
                     </li>
 
                 </ul>

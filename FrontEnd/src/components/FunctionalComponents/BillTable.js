@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import BtnConfirm from './BtnConfirm';
 import BillOnList from '../FunctionalComponents/BillOnList';
 
-const BillTable = ({ bills }) => {
+const BillTable = ({ bills}) => {
   
   const [billEdited, setBillEdited]= useState();
   const [goUpdate, setGoUpdate]= useState(false);
@@ -27,6 +27,7 @@ const BillTable = ({ bills }) => {
     setBillEdited({});
     
   }
+
 
   return (
     <div id='list'>

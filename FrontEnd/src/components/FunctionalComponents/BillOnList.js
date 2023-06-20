@@ -1,6 +1,7 @@
 import React, {useState, useEffect} from 'react';
 import saveImg from '../../assets/images/icons/save.svg';
 import payImg from '../../assets/images/icons/pay.svg';
+import { NavLink} from 'react-router-dom';
 
 // Componente Encargado de generar un elemento en la lista (Orlando)
 
@@ -17,8 +18,8 @@ function BillOnList({billP, listChange}) {
         date_expired : '', 
         bill_ref: ''
     });
-    const [areas, setAreas]= useState([]);
     const [edited, setEdited]= useState(false);
+    
 
     // Cambia cuando se cambia el nombre
     const handleNameChange = (event) => {
@@ -78,6 +79,7 @@ function BillOnList({billP, listChange}) {
         
     }, []);
 
+
     return(    
         <tbody>   
             {/*Crea la fila con los Datos enviados por Props*/}
@@ -111,12 +113,15 @@ function BillOnList({billP, listChange}) {
                     <textarea className='descriptionCell' value={bill.description} onChange={handleDescriptionChange}/>   
                 </td>
                 <a onClick={send} ><img src={saveImg} alt='save' /></a>
-                <a  ><img src={payImg} alt='pay'/></a>
+                <NavLink to={`/crear-pago/${bill.id}` }> <img src={payImg} alt='pay'/> </NavLink>
+               
+               
                 
             </tr> 
             
         </tbody>
     );
+   
 
 }
 export default BillOnList;

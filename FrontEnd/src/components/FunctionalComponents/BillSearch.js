@@ -1,15 +1,15 @@
-import React, { useState, useEffect , useContext, useRef} from 'react';
+import React, { useState, useEffect , useRef} from 'react';
 import BillTable from '../FunctionalComponents/BillTable';
 import GetData from '../FunctionalComponents/GetData';
-import { SearchContext } from '../BasePageComponents/SideBar';
 import arrowDown from '../../assets/images/icons/arrowDown.svg'; 
+import { useParams } from 'react-router-dom';
 
 function BillSearch  ()  {
 
     // Generate States for all variables
     const [bills, setBills] = useState([{}]);
     const [isLoading, setIsLoading] = useState(true);
-    const context = useContext(SearchContext);
+    const {bill_ref} = useParams();
     const [billRef, setBillRef] = useState('');
     const inputRef = useRef(null);
     
@@ -34,8 +34,8 @@ function BillSearch  ()  {
     //Use Effect start the Date with the function
     useEffect(() => {
         setIsLoading(true);
-        setBillRef(context);
-
+        setBillRef(bill_ref);
+    
     }, []);
 
     const handleBillRefChange = (event) => {
@@ -43,11 +43,11 @@ function BillSearch  ()  {
           setBillRef(event.target.value);
         }
     };
-    
-    
+        
 
     // Return the loading state and gets the API data
     if (isLoading) {
+        
         return (
         <div>
             <GetData req={`/bills?bill_ref=${billRef}`} setData={setData} />

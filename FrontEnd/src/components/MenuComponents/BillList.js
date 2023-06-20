@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import Slider from '../BasePageComponents/Slider';
 import BillTable from '../FunctionalComponents/BillTable';
 import GetData from '../FunctionalComponents/GetData';
+import { Link } from 'react-router-dom';
 
 const BillList = () => {
 
@@ -10,6 +11,7 @@ const BillList = () => {
   const [dateStart, setDateStart] = useState('');
   const [dateEnd, setDateEnd] = useState('');
   const [isLoading, setIsLoading] = useState(true);
+
 
    // Usage function for get data from Api 
   const setData = (data) => {
@@ -69,6 +71,12 @@ const BillList = () => {
       </div>
     );
   }
+
+
+
+  
+
+
   // Return the List of Bills
   return (
     <div>
@@ -84,7 +92,7 @@ const BillList = () => {
                 <input type="date" value={dateEnd} onChange={handleDateEndChange} />
                 <div className="clearfix"></div>
                 {/*Call component BillTable generate the FullTable*/}
-                <BillTable bills={bills} /> 
+                <BillTable bills={bills}  /> 
 
             </div>
       
