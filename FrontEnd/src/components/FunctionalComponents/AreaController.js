@@ -12,7 +12,7 @@ const AREA_TYPE_OUTCOME = 'Gasto';
 function AreaController (){
 
         
-    //Genera objetos state cambiantes 
+    //General Objets
    
     const [area, setArea]= useState({
         id: '',
@@ -35,7 +35,7 @@ function AreaController (){
     }
     
 
-    // Cambio Tipo
+    // CHANGE AREA_TYPE
     const handleAreaTypeChange = (event) => {
         
         setArea ( prevArea => {
@@ -44,7 +44,7 @@ function AreaController (){
         
     }
 
-    // Cambio en el area seeleccionada
+    // CHANGE NAME
     const handleAreaChange = (event) => {
         
         setNameUpdated(areas[event.target.value].name);
@@ -52,12 +52,12 @@ function AreaController (){
         
     }
 
-     // Cambio en el area seeleccionada
+     // CHANGE AREA SELECTED
      const handleNameUpdatedChange = (event) => {
         setNameUpdated (event.target.value);
     }
 
-    // Validación de Envio
+    // VALIDATIONS FOR AREA AND SEND OPTIONS DEFINITIONS
     const send =(event)=>{
         setValidationTest([]);
         if (nameUpdated === "" ||  area.area_type === '') {
@@ -103,7 +103,7 @@ function AreaController (){
     }
 
 
-    //No envía Nada y borra todo
+    //Clean Data and Refresh the Page
     const noSend=()=>{
         setGoSend(false);
         setGoUpdate(false);
@@ -126,7 +126,7 @@ function AreaController (){
        
 
 
-    // Generar actualización de areas
+    // Update Areas from API
     if (isLoading) {
         return (
             <div>
@@ -136,11 +136,11 @@ function AreaController (){
         );
     }
 
-
+    // AREAS FORM
     return(
         <div>
         <div id='area-controller'>
-            {/*Se introduce el Slider en pequeño*/}
+            {/*Small Slider*/}
             
             <Slider  
                 title="Areas"
@@ -186,7 +186,7 @@ function AreaController (){
                     
                     
 
-                    {/*Muestra botones de Guardar|Actualizar y  Confirmar guardado si los datos son correctos*/}
+                    {/*Show bottons SAVE DELETE AND CANCEL*/}
                     {
                         
                         goSend === true ?( 
@@ -228,7 +228,7 @@ function AreaController (){
                             </div>
                         ) 
                     }
-                    {/*Muestra muestra posibles errores en los input de datos*/}
+                    {/*Show ERRORS*/}
                     {validationTest.length !==0 &&
                         <div>
                             <p className='subtitle'> Errores en la creación de factura </p>

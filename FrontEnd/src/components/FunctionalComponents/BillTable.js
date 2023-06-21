@@ -2,16 +2,19 @@ import React, { useEffect, useState } from 'react';
 import BtnConfirm from './BtnConfirm';
 import BillOnList from '../FunctionalComponents/BillOnList';
 
+// Generate the Table of Bills CAN Recibe multiple or only one bills
 const BillTable = ({ bills}) => {
-  
+  //Generals Objects
   const [billEdited, setBillEdited]= useState();
   const [goUpdate, setGoUpdate]= useState(false);
 
+  // Recibe changes from BillOnList
   const listChange = (data) => {
     setBillEdited(data);
     setGoUpdate(true);
   };
 
+  // Generate the elements on table with BillOnList
   const generateList = () => {
     try {
       return bills.map((bill, i) => (
@@ -21,7 +24,7 @@ const BillTable = ({ bills}) => {
       console.error('Error:', error.message);
     }
   };
-
+  // CLEAN data and FINISH Send WorkFlow
   const noSend=()=>{
     setGoUpdate(false);
     setBillEdited({});
@@ -31,6 +34,7 @@ const BillTable = ({ bills}) => {
 
   return (
     <div id='list'>
+      {/*Get the Button to CONFIRM CHANGES*/}
       {
         goUpdate && 
           <BtnConfirm
@@ -42,6 +46,7 @@ const BillTable = ({ bills}) => {
             id = {billEdited.id}     
           />
       }
+      {/*Show HEAD Of Table*/}
       <table id='table'> 
         <thead>
           <tr>
@@ -57,7 +62,8 @@ const BillTable = ({ bills}) => {
 
         {generateList()}
       </table>
-    </div>
+    {/*End OF Div*/}
+    </div> 
   );
 };
 

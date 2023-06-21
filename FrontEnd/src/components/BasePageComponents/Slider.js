@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import {NavLink} from 'react-router-dom';
 
-// Componente donde se genera el Slider (Orlando)
+// Component generarte the Slider 
 class Slider extends Component{
     render(){
         return(

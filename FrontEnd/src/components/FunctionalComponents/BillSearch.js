@@ -4,6 +4,8 @@ import GetData from '../FunctionalComponents/GetData';
 import arrowDown from '../../assets/images/icons/arrowDown.svg'; 
 import { useParams } from 'react-router-dom';
 
+
+// Component generate search Bills
 function BillSearch  ()  {
 
     // Generate States for all variables
@@ -38,6 +40,7 @@ function BillSearch  ()  {
     
     }, []);
 
+    // CHANGE BILL_REF
     const handleBillRefChange = (event) => {
         if (!isNaN(event.target.value) === true) {
           setBillRef(event.target.value);

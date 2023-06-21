@@ -3,11 +3,11 @@ import saveImg from '../../assets/images/icons/save.svg';
 import payImg from '../../assets/images/icons/pay.svg';
 import { NavLink} from 'react-router-dom';
 
-// Componente Encargado de generar un elemento en la lista (Orlando)
+// Component generate elemento of table Bills 
 
 function BillOnList({billP, listChange}) {
 
-    //Genera objetos state cambiantes 
+    //General Objets
    
     const [bill, setBill]= useState({
         name : '',
@@ -21,7 +21,7 @@ function BillOnList({billP, listChange}) {
     const [edited, setEdited]= useState(false);
     
 
-    // Cambia cuando se cambia el nombre
+    // CHANGE NAME
     const handleNameChange = (event) => {
 
         setBill ( prevBill => {
@@ -29,7 +29,7 @@ function BillOnList({billP, listChange}) {
         } );
         setEdited(true);
     }
-
+    // CHANGE BILL_REF
     const handleBillRefChange = (event) => {
         if (!isNaN(event.target.value)=== true){
             setBill ( prevBill => {
@@ -39,6 +39,7 @@ function BillOnList({billP, listChange}) {
         }
     }
 
+    //CHANGE PRICE
     const handlePriceChange = (event) => {
         if (!isNaN(event.target.value)=== true){
             setBill ( prevBill => {
@@ -48,7 +49,7 @@ function BillOnList({billP, listChange}) {
         }
     }
 
-    // Cambia cuando se cambia la fecha de expiracion
+    // CHANGE DATE_EXPIRED
     const handleDateExpiredChange = (event) => {
 
         setBill ( prevBill => {
@@ -57,7 +58,7 @@ function BillOnList({billP, listChange}) {
         setEdited(true);
     }
 
-    // Cambia cuando se cambia la descripcion
+    // CHANGE DESCRIPTION
     const handleDescriptionChange = (event) => {
 
         setBill ( prevBill => {
@@ -66,6 +67,8 @@ function BillOnList({billP, listChange}) {
         setEdited(true);
     }
 
+
+    // Send changes to TABLE for get a  CONFIRM BUTTON on TOP
     const send = () => {
         setEdited(false);
         if(edited){
@@ -74,6 +77,7 @@ function BillOnList({billP, listChange}) {
         
     }
 
+    // On mount Component 
     useEffect (() => {
         setBill(billP);
         

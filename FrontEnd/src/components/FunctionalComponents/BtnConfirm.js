@@ -1,12 +1,13 @@
 import React, {Component} from 'react';
 import { NavLink } from 'react-router-dom';
 import axios from 'axios';
-// Componente Base en el cual Cargar HTML 
+// Generate a button to confirm the CHANGES of any Action
 class BtnConfirm extends Component{
     apiUrl= process.env.REACT_APP_API_URL;
 
-
+    
     handleConfirmation = () => {
+        // DO SAVE OPTION
         {this.props.typeConfirm === "save" &&
             axios.post(`${this.apiUrl}/${this.props.objectType}`, this.props.object,{
                 headers: {
@@ -20,7 +21,7 @@ class BtnConfirm extends Component{
             
         }
 
-
+        // DO UPDATE OPTION
         {this.props.typeConfirm === "update" &&
             axios.put(`${this.apiUrl}/${this.props.objectType}/${this.props.id}`, this.props.object,{
                 headers: {
@@ -33,7 +34,7 @@ class BtnConfirm extends Component{
             });
             
         }
-
+        //DO DELETE OPTION
         {this.props.typeConfirm === "delete" &&
             axios.delete(`${this.apiUrl}/${this.props.objectType}/${this.props.id}`, {
                 headers: {
@@ -46,14 +47,15 @@ class BtnConfirm extends Component{
             });
             
         }
-        
+
+        // Use the Cleaning Function
         this.props.noSend();
 
         
     };
 
     handleCloseModal = () => {
-        // Se regresa al Origen
+        // Return to the Origin Or Clean Data with Cancel Option
         if(this.props.origin==='noSend'){
             this.props.noSend();
         }
@@ -64,10 +66,8 @@ class BtnConfirm extends Component{
        );
     };
 
-
+    // SHOWS BUTTON CONFIRM AND CANCEL 
     render(){
-
-
         return(
             <div id='confirm-button' >
                 

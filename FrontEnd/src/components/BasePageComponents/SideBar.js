@@ -1,6 +1,8 @@
 import React, { useState } from 'react';
 import { NavLink } from 'react-router-dom';
 
+// Component generate a Side Bar for implement in all Pages
+
 function SideBar ()  {
   const [billRef, setBillRef] = useState('');
   
@@ -12,12 +14,11 @@ function SideBar ()  {
     }
   };
 
- 
- 
-
   return (
     <div>
       <aside id="sidebar">
+
+        {/*Search Function*/}
         <div id="search" className="sidebar-item">
             <h3>Buscador</h3>
             <p>Encuentra la Factura que buscas</p>

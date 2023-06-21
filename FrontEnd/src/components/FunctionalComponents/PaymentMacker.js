@@ -6,11 +6,12 @@ import BtnConfirm from '../FunctionalComponents/BtnConfirm';
 import GetData from '../FunctionalComponents/GetData';
 
 
-// Formulario con los campos para crear una pago 
+// Form for Generate a PAYMENT
 
 function PaymentMacker (){
    const bill_id= useParams();
-    //Genera objetos state cambiantes 
+    //General Objects
+
     const [payment, setPayment]= useState({
         bill_id : bill_id.id,
         amount : '',
@@ -26,11 +27,9 @@ function PaymentMacker (){
     const [isLoading, setIsLoading] = useState(false);
 
 
-    // Cambia cuando se cambia el nombre
    
 
-
-    // Cambia cuando se cambia el Precio
+    // CHANGE AMOUNT
     const handleAmountChange = (event) => {
 
         if (!isNaN(event.target.value)=== true){
@@ -41,7 +40,7 @@ function PaymentMacker (){
        
     }
 
-     // Cambia cuando se cambia el Comprobante
+     // CHANGE VOUCHER
     const handleVoucherChange = (event) => {
         if (!isNaN(event.target.value)=== true){
             setPayment ( prevBill => {
@@ -52,7 +51,7 @@ function PaymentMacker (){
 
 
 
-    // Cambia cuando se selecciona una Fecha Creacion Nueva
+    // Change DATE CREATED
     const handleDateCreatedChange = (event) => {
         setPayment ( prevBill => {
             return {...prevBill, date_created : event.target.value }
@@ -61,7 +60,7 @@ function PaymentMacker (){
     }
     
 
-    //Realiza las validaciones para el correcto envío de Factura
+    //Validations of payment 
     const send =()=>{
         setValidationTest([]);
         if ( payment.amount === '' || payment.voucher === '' || payment.dateCreated === "") 
@@ -86,7 +85,7 @@ function PaymentMacker (){
     }
 
 
-    //No envía más y Borra los Datos
+    //Clean Data and Refresh the Page
     const noSend=()=>{
         setGoSend(false);
         setPayment({  
@@ -103,7 +102,7 @@ function PaymentMacker (){
     }
         
 
-    //Si se monto el Componentes
+    //Mounting this component 
     useEffect( ()=>{
         setGoSend(false);
         setIsLoading(true);
@@ -111,7 +110,7 @@ function PaymentMacker (){
     },[]);
 
 
-    // Trae los datos de las Areas
+    // Get BILL Data
     const setData = (data) =>{
         console.log(data);
         setBill(data.bill);
@@ -120,7 +119,7 @@ function PaymentMacker (){
         }, 400);
     }
 
-    //Genera la lista de Pagos
+    //Generata list of payments
     const getPayments=()=>{
 
         try {
@@ -160,7 +159,7 @@ function PaymentMacker (){
     return(
         <div>
         <div id='bill-macker'>
-            {/*Se introduce el Slider en pequeño*/}
+            {/*Small Slider*/}
             <Slider  
                 title="Crear Pago"
                 size="slider-small"/>  
@@ -199,7 +198,7 @@ function PaymentMacker (){
                     </div>
                     
 
-                    {/*Muestra botones de guardar ó Confirmar guardado si los datos son correctos*/}
+                    {/*SAVE AND CONFIRM buttons*/}
                     {goSend === false ?
                         <div>
                             <div className="clearfix"></div>
@@ -217,7 +216,7 @@ function PaymentMacker (){
                         />
                     }
 
-                    {/*Muestra muestra posibles errores en los input de datos*/}
+                    {/*Show ERRORS*/}
                     {validationTest.length !==0 &&
                         <div>
                             <p className='subtitle'> Errores en la creación de factura </p>
@@ -236,7 +235,7 @@ function PaymentMacker (){
                 </form>
 
 
-
+                {/* Show Data of Bill*/}
                 <h1 className="subheader"> Datos de la Factura</h1>
                 <table id='table'> 
                     <thead>
@@ -250,8 +249,6 @@ function PaymentMacker (){
                         <th>Descripción</th>
                     </tr>
                     </thead>
-
-
                     <tbody>   
                         <tr>
                             
@@ -290,7 +287,7 @@ function PaymentMacker (){
 
 
 
-
+                {/*Show history Payments*/}    
                 {
                     bill.payments.length != 0 &&
                     <div>
