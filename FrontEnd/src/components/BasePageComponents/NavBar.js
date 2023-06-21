@@ -2,7 +2,7 @@ import React, {Component} from 'react';
 import {NavLink} from 'react-router-dom';
 import search from  '../../assets/images/icons/search.svg'; 
 
-// Componente en la cual se encuentra la Barra de Navegación del Menu Principal (Orlando)
+// Componente generate Nav Bar of principal Page (Orlando)
 class NavBar extends Component{
     render(){
         return(
@@ -11,7 +11,7 @@ class NavBar extends Component{
 
 
 
-                 {/* Menu Navegación */}
+                 {/* Nav Menu */}
                 <ul>
                     <li>
                         <NavLink to="/home" activeclassname="active" >Inicio</NavLink>

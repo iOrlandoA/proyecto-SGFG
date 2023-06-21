@@ -2,12 +2,15 @@ import React, { useState, useEffect } from 'react';
 import Slider from '../BasePageComponents/Slider';
 import BillTable from '../FunctionalComponents/BillTable';
 import GetData from '../FunctionalComponents/GetData';
-import { Link } from 'react-router-dom';
+
 
 const BillList = () => {
 
   // Generate States for all variables
-  const [bills, setBills] = useState([{}]);
+  const [bills, setBills] = useState([{
+
+    area:[]
+  }]);
   const [dateStart, setDateStart] = useState('');
   const [dateEnd, setDateEnd] = useState('');
   const [isLoading, setIsLoading] = useState(true);
@@ -15,6 +18,7 @@ const BillList = () => {
 
    // Usage function for get data from Api 
   const setData = (data) => {
+    console.log(data);
     setBills(data);
     refresh();
   };

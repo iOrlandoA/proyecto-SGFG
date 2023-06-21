@@ -3,11 +3,12 @@ import Slider from '../BasePageComponents/Slider';
 import SideBar from '../BasePageComponents/SideBar';
 import arrowDown from '../../assets/images/icons/arrowDown.svg'; 
 import arrownUp from  '../../assets/images/icons/arrowUp.svg'; 
+import GetData from '../FunctionalComponents/GetData';
 // Componente Base en el cual Cargar HTML 
 function Home  (){
     
-    const [moneyIn, setMoneyIn] = useState(250000.0);
-    const [moneyOut, setMoneyOut] = useState(300000.0);
+    const [moneyIn, setMoneyIn] = useState(0.0);
+    const [moneyOut, setMoneyOut] = useState(0.0);
     const [msgIncome, setMsgIncome] = useState({
       do: false,
       msg: '',
@@ -22,6 +23,11 @@ function Home  (){
     });
     const green = '#7ed171';
     const red = '#c95d5d';
+    const [isLoading, setIsLoading] = useState(false);
+    const [dateStart, setDateStart] = useState('');
+    const [dateEnd, setDateEnd] = useState('');
+
+
   
 
     // Aqui se realizara el calculo de la diferencia porcentual de los Ingresos
@@ -83,14 +89,50 @@ function Home  (){
 
     }
 
+    const getDate = () => {
+        const today = new Date();
+        const month = today.getMonth() + 1;
+        const year = today.getFullYear();
+    
+        const x = new Date(today.getFullYear(), today.getMonth() + 1, 1);
+        const y = new Date(x.getTime() - 1);
+        const day = y.getDate();
+    
+        setDateStart(`${year}-${month.toString().padStart(2, '0')}-01`);
+        setDateEnd(`${year}-${month.toString().padStart(2, '0')}-${day}`);
+    };
+
+
+
     // Esto se realiza al montar un componente
     useEffect(()=>{
-        outcomeCalc();
-        incomeCalc();
+        getDate(); 
+       setIsLoading(true);
         
     },[]);
-    
 
+
+     // Trae los datos de las Areas
+     const setData = (data) =>{
+        console.log(data);
+        setMoneyIn(data.ingreso_price);
+        setMoneyOut(data.gasto_price);
+        outcomeCalc();
+        incomeCalc();
+        setTimeout(() => {
+            setIsLoading(false);
+        }, 400);
+        
+    }
+    
+    if (isLoading) {
+        return (
+            <div>
+            <GetData req={`/bills/sumbills_by_type?start_date=${dateStart}&end_date=${dateEnd}`} setData={setData} />
+            <h1 className="subheader">Cargando...</h1>
+            </div>
+        );
+    }
     
     return(
         <div id='home'>
