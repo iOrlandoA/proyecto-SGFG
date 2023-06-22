@@ -5,6 +5,8 @@ import logo from '../../assets/images/logo.svg';
 
 
 
+
+
 // Rutas para la navegación    (Orlando)
 const BurgerMenu = ({move})=> {
     const line1BarsRef = useRef(null);
@@ -20,10 +22,12 @@ const BurgerMenu = ({move})=> {
         move(event);    
 
     }
+
+  
    
     return(
         
-        <div id="menu-side">       
+        <div id="menu-side" >       
             {/*Burger Menu*/}
             <div className='bars-menu' onClick={burgerMenu}>
                     <span ref={line1BarsRef} className='line1-bars-menu'></span>
@@ -31,7 +35,7 @@ const BurgerMenu = ({move})=> {
                     <span ref={line3BarsRef} className='line3-bars-menu'></span>   
             </div>
             
-            <div className="menu-side" ref={sideMenu}>
+            <div className="menu-side" ref={sideMenu} >
                 <div className="name-page">
                     <img src={logo} className="app-logo" alt="logotipo"/>
                 </div>
@@ -52,6 +56,7 @@ const BurgerMenu = ({move})=> {
                     </div>
                 </div>
             </div>
+            
         </div>
 
 
