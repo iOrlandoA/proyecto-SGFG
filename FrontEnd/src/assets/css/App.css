@@ -818,14 +818,29 @@ Desde la altura 0px hasta 1370px h*/
   #slider.slider-small h1{
       padding-top: 35px;
       
-  }/*End 625*/
+  }
+  #content{
+    overflow: hidden;
+  }
+  
+  
 
   
-}
+}/*End 625*/
 
 @media (max-width:450px){
   #menu{
     display: none;
   }
+  #bill-list-option{
+    display: none;
+  }
+  #search-option{
+    display: none;
+  }
+  #sidebar{
+    display: none;
+  }
+  
 }
 
