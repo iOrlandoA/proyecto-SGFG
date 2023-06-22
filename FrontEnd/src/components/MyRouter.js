@@ -1,4 +1,4 @@
-import React,{Component} from "react";
+import React,{useRef} from "react";
 import {BrowserRouter, Route, Routes} from "react-router-dom";
 
 
@@ -15,46 +15,56 @@ import Home from "./MenuComponents/Home";
 import BillSearch from "./FunctionalComponents/BillSearch";
 import AreaController from "./FunctionalComponents/AreaController";
 import PaymentMacker from "./FunctionalComponents/PaymentMacker";
-import BillOnList from "./FunctionalComponents/BillOnList";
+import BurgerMenu from "./BasePageComponents/BurgerMenu";
 
 
 
 // Rutas para la navegación    (Orlando)
-class MyRouter extends Component{
-    render(){
-        return(
-            
-            <BrowserRouter>
+const MyRouter = ()=> {
+    const line1BarsRef = useRef(null);
+    const line2BarsRef = useRef(null);
+    const line3BarsRef = useRef(null);
 
+    const burgerMenu = (event)=> {
+        line1BarsRef.current.classList.toggle('activeline1-bars-menu');
+        line2BarsRef.current.classList.toggle('activeline2-bars-menu');
+        line3BarsRef.current.classList.toggle('activeline3-bars-menu');        
 
-                {/*Aquí se carga el Header de la Pantalla*/}
-                <Header/>       
-                                                   
-
-                    {/*Configuración de Rutas y Paginas*/}
-                    <Routes>
-                        <Route exact path="/" element={<Home/>}/>  
-                        <Route exact path="/home" element={<Home/>}/> 
-                        <Route exact path="/crear-facturas" element={<BillMacker/>}/>
-                        <Route exact path="/lista-facturas" element={<BillList/>}/>
-                        <Route exact path="/search/:bill_ref" element={<BillSearch/>}/>
-                        <Route exact path="/area-controller" element={<AreaController/>}/>
-                        <Route exact path="/crear-pago/:id" element={<PaymentMacker/>}/>
-                        <Route path="*" element={<NotFound/>}/>
-                    
-                    </Routes>
-                    
-                    <div className="clearfix"></div> 
-
-                   
-               
-
-                {/*Aquí se genera el Footer de la Pagina*/}
-                <Footer/>             
-
-            </BrowserRouter>
-        );
     }
+   
+    return(
+        
+        <BrowserRouter>
+        
+
+            {/*Aquí se carga el Header de la Pantalla*/}
+            <Header/>       
+            <BurgerMenu/>                                        
+
+                {/*Configuración de Rutas y Paginas*/}
+                <Routes>
+                    <Route exact path="/" element={<Home/>}/>  
+                    <Route exact path="/home" element={<Home/>}/> 
+                    <Route exact path="/crear-facturas" element={<BillMacker/>}/>
+                    <Route exact path="/lista-facturas" element={<BillList/>}/>
+                    <Route exact path="/search/:bill_ref" element={<BillSearch/>}/>
+                    <Route exact path="/area-controller" element={<AreaController/>}/>
+                    <Route exact path="/crear-pago/:id" element={<PaymentMacker/>}/>
+                    <Route path="*" element={<NotFound/>}/>
+                
+                </Routes>
+                
+                <div className="clearfix"></div> 
+
+                
+            
+
+            {/*Aquí se genera el Footer de la Pagina*/}
+            <Footer/>             
+
+        </BrowserRouter>
+    );
+    
 }
 
 export default MyRouter;
