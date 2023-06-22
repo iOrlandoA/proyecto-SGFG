@@ -15,6 +15,7 @@ class NavBar extends Component{
                 <ul>
                     <li>
                         <NavLink to="/home" activeclassname="active" >Inicio</NavLink>
+                        
                     </li>
 
 

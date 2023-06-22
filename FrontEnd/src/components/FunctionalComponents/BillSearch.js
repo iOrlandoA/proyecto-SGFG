@@ -3,6 +3,7 @@ import BillTable from '../FunctionalComponents/BillTable';
 import GetData from '../FunctionalComponents/GetData';
 import arrowDown from '../../assets/images/icons/arrowDown.svg'; 
 import { useParams } from 'react-router-dom';
+import Slider from '../BasePageComponents/Slider';
 
 
 // Component generate search Bills
@@ -61,17 +62,17 @@ function BillSearch  ()  {
     // Return the List of Bills
     return (
         <div>
+            <Slider title="Buscador" size="slider-small" />
             <div className="center">
                 
-                <h2 className="subheader"></h2>
+                <h2 className="subheader">Encuentra la Factura que buscas</h2>
                 <div className="bill-list" id="list" >
 
                     <div id="search" className='mid-form'>
-                        <h3>Buscador</h3>
-                        <p>Encuentra la Factura que buscas</p>
+                        <p></p>
                         <p>Resultados Abajo</p> 
                         <img src={arrowDown} alt='arrow-down'></img>
-                        
+                        <div className='clearfix'></div>
                         <input type="text" ref={inputRef} value={billRef} name="search" onChange={handleBillRefChange} />
                         <input type="button" ref={inputRef}  value="Buscar" className="btn btn-success" onClick={()=>{setIsLoading(true)}} />
                 

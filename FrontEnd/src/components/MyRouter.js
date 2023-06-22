@@ -21,48 +21,48 @@ import BurgerMenu from "./BasePageComponents/BurgerMenu";
 
 // Rutas para la navegación    (Orlando)
 const MyRouter = ()=> {
-    const line1BarsRef = useRef(null);
-    const line2BarsRef = useRef(null);
-    const line3BarsRef = useRef(null);
+    const body = useRef(null);
+    
 
-    const burgerMenu = (event)=> {
-        line1BarsRef.current.classList.toggle('activeline1-bars-menu');
-        line2BarsRef.current.classList.toggle('activeline2-bars-menu');
-        line3BarsRef.current.classList.toggle('activeline3-bars-menu');        
+    const sideMenu = (event)=> {
+
+        body.current.classList.toggle('body-move');        
 
     }
    
     return(
+       
+            <BrowserRouter>
+                
+                <BurgerMenu move={sideMenu}/>  
+                <div ref={body}>
+                    {/*Aquí se carga el Header de la Pantalla*/}
+                    <Header/>       
+                                                        
+
+                        {/*Configuración de Rutas y Paginas*/}
+                        <Routes>
+                            <Route exact path="/" element={<Home/>}/>  
+                            <Route exact path="/home" element={<Home/>}/> 
+                            <Route exact path="/crear-facturas" element={<BillMacker/>}/>
+                            <Route exact path="/lista-facturas" element={<BillList/>}/>
+                            <Route exact path="/search/:bill_ref" element={<BillSearch/>}/>
+                            <Route exact path="/area-controller" element={<AreaController/>}/>
+                            <Route exact path="/crear-pago/:id" element={<PaymentMacker/>}/>
+                            <Route path="*" element={<NotFound/>}/>
+                        
+                        </Routes>
+                        
+                        <div className="clearfix"></div> 
+
+                        
+                    
+
+                    {/*Aquí se genera el Footer de la Pagina*/}
+                    <Footer/>             
+                </div>
+            </BrowserRouter>
         
-        <BrowserRouter>
-        
-
-            {/*Aquí se carga el Header de la Pantalla*/}
-            <Header/>       
-            <BurgerMenu/>                                        
-
-                {/*Configuración de Rutas y Paginas*/}
-                <Routes>
-                    <Route exact path="/" element={<Home/>}/>  
-                    <Route exact path="/home" element={<Home/>}/> 
-                    <Route exact path="/crear-facturas" element={<BillMacker/>}/>
-                    <Route exact path="/lista-facturas" element={<BillList/>}/>
-                    <Route exact path="/search/:bill_ref" element={<BillSearch/>}/>
-                    <Route exact path="/area-controller" element={<AreaController/>}/>
-                    <Route exact path="/crear-pago/:id" element={<PaymentMacker/>}/>
-                    <Route path="*" element={<NotFound/>}/>
-                
-                </Routes>
-                
-                <div className="clearfix"></div> 
-
-                
-            
-
-            {/*Aquí se genera el Footer de la Pagina*/}
-            <Footer/>             
-
-        </BrowserRouter>
     );
     
 }
