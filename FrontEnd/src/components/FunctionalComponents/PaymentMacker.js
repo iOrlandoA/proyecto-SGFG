@@ -312,6 +312,8 @@ function PaymentMacker (){
                         </table>
                     </div>
                 }    
+                <br/>
+                <br/>
                 
 
 

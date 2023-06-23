@@ -89,15 +89,15 @@ function BillOnList({billP, listChange}) {
             {/*Crea la fila con los Datos enviados por Props*/}
             <tr>
                 
-                <td>
+                <td id='idSpace'>
                     <input type='number' value={bill.bill_ref} onChange={handleBillRefChange}/> 
                 </td>
                 
-                <td>
+                <td id='nameSpace'>
                     <input type='text'  value={bill.name} onChange={handleNameChange}/>
                 </td>
                 
-                <td>
+                <td id='amountSpace'>
                     <div className='edit'> 
                         <span> ₡ </span>     <input type='number'  value={bill.price} onChange={handlePriceChange}/>
                     </div>

@@ -234,6 +234,27 @@ body {
       margin-left: 20px;
     }
 
+    #nameSpace{
+      width: 200px;
+    }
+
+    #nameSpace input{
+      width: 200px;
+    }
+    #amountSpace {
+      width: 150px;
+    }
+  
+    #idSpace input{
+      width: 70px;
+    }
+    #idSpace {
+      width: 90px;
+    }
+
+    
+  
+
 
 /*Fin Parte Tabla*/
 
@@ -357,9 +378,6 @@ body {
   margin-top: 0.2px;
   padding: 0px;
   padding-top: 50px;
-  
-  
-  
 }
 
 #content{
@@ -780,6 +798,8 @@ Desde la altura 0px hasta 1370px h*/
 
 }/*End 977*/
 
+
+
 @media (max-width:625px){
   #header{
       min-height: 130px;
@@ -828,10 +848,14 @@ Desde la altura 0px hasta 1370px h*/
   
 }/*End 625*/
 
-@media (max-width:450px){
+@media (max-width:510px){
   #menu{
     display: none;
   }
+}
+
+@media (max-width:450px){
+
   #bill-list-option{
     display: none;
   }
