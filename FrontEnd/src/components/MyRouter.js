@@ -16,6 +16,7 @@ import BillSearch from "./FunctionalComponents/BillSearch";
 import AreaController from "./FunctionalComponents/AreaController";
 import PaymentMacker from "./FunctionalComponents/PaymentMacker";
 import BurgerMenu from "./BasePageComponents/BurgerMenu";
+import ReportMenu from "./MenuComponents/ReportMenu";
 
 
 
@@ -49,6 +50,7 @@ const MyRouter = ()=> {
                             <Route exact path="/search/:bill_ref" element={<BillSearch/>}/>
                             <Route exact path="/area-controller" element={<AreaController/>}/>
                             <Route exact path="/crear-pago/:id" element={<PaymentMacker/>}/>
+                            <Route exact path="/menu-reportes" element={<ReportMenu/>}/>            
                             <Route path="*" element={<NotFound/>}/>
                         
                         </Routes>

@@ -51,6 +51,9 @@ const BurgerMenu = ({move})=> {
                     <div className="option-menu" onClick={burgerMenu} id="bill-list-option">
                         <NavLink to="/lista-facturas" activeclassname="active"  >Facturas</NavLink>
                     </div>
+                    <div className="option-menu" onClick={burgerMenu} id="bill-list-option">
+                        <NavLink to="/menu-reportes" activeclassname="active"  >Menu Reportes</NavLink>
+                    </div>
                     <div className="option-menu" onClick={burgerMenu} id="search-option">
                         <NavLink to="/search/Search " className='option' >Search</NavLink>
                     </div>

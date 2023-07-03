@@ -29,7 +29,7 @@ class NavBar extends Component{
 
                     
                     <li>
-                        <NavLink to="#"  >Menu Reportes</NavLink>
+                        <NavLink to="/menu-reportes"  activeclassname="active" >Menu Reportes</NavLink>
                     </li>
 
                     <li>
