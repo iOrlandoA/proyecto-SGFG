@@ -725,6 +725,26 @@ input[type="text"]:focus, textarea:focus{
 }
 
 
+
+
+.wrapper{
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  grid-gap: 10px;
+}
+
+.wrapper .btn-white{
+  width: auto;
+  margin-left: 40px;
+  margin-right: 40px;
+}
+
+
+
+
+
+
+
 /*RESPONSIVE
 Desde la altura 0px hasta 1370px h*/
 
@@ -842,6 +862,12 @@ Desde la altura 0px hasta 1370px h*/
   #content{
     overflow: hidden;
   }
+
+  .wrapper {
+    grid-template-columns: repeat(1, 1fr);
+    margin-left: 10%;
+    margin-right: 10%;
+  }
   
   
 
@@ -864,6 +890,10 @@ Desde la altura 0px hasta 1370px h*/
   }
   #sidebar{
     display: none;
+  }
+
+  .wrapper .btn-white{
+    height: auto;
   }
   
 }

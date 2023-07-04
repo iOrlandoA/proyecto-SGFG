@@ -1,6 +1,6 @@
-import React, { useEffect, useState} from 'react';
 import Slider from '../BasePageComponents/Slider';
 import SideBar from '../BasePageComponents/SideBar';
+import {NavLink} from 'react-router-dom';
 // Componente Base en el cual Cargar HTML 
 function ReportMenu  (){
     
@@ -21,8 +21,29 @@ function ReportMenu  (){
                 <div id='content' >
                     <h1 className='subheader'>Menu Reportes</h1>
                     
+                    <div>
                     
+                    
+                        
+                        <div className='wrapper'>
+                            <div className='column'>
+                                <NavLink to='#' className="btn-white">Reporte Por Pagos</NavLink> 
+                            </div>
+                            <div className='column'>
+                                <NavLink to='#' className="btn-white">Reporte Por Area</NavLink> 
+                            </div>
 
+                            <div className='column'>
+                                <NavLink to='#' className="btn-white">Cuentas Por Cobrar</NavLink> 
+                            </div>
+                            <div className='column'>
+                                <NavLink to='#' className="btn-white">Cuentas Por Pagar</NavLink> 
+                            </div>
+
+                        </div>
+
+                   
+                    </div>
                        
                 
                 </div>
