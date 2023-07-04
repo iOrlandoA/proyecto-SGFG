@@ -16,6 +16,7 @@ import BillSearch from "./FunctionalComponents/BillSearch";
 import AreaController from "./FunctionalComponents/AreaController";
 import PaymentMacker from "./FunctionalComponents/PaymentMacker";
 import BillOnList from "./FunctionalComponents/BillOnList";
+import PaymentOnList from "./FunctionalComponents/PaymentOnList";
 
 
 
@@ -40,6 +41,7 @@ class MyRouter extends Component{
                         <Route exact path="/search/:bill_ref" element={<BillSearch/>}/>
                         <Route exact path="/area-controller" element={<AreaController/>}/>
                         <Route exact path="/crear-pago/:id" element={<PaymentMacker/>}/>
+                        <Route exact path="/lista-pagos/:id" element={<PaymentOnList/>}/>
                         <Route path="*" element={<NotFound/>}/>
                     
                     </Routes>

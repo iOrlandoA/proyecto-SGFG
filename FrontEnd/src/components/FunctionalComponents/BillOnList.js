@@ -120,6 +120,7 @@ function BillOnList({billP, listChange}) {
                 </td>
                 <a onClick={send} ><img src={saveImg} alt='save' /></a>
                 <NavLink to={`/crear-pago/${bill.id}` }> <img src={payImg} alt='pay'/> </NavLink>
+                <NavLink to={`/lista-pagos/${bill.id}` }> <img src={payImg} alt='pay'/> </NavLink>
                
                
                 

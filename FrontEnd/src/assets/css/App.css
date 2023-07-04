@@ -230,6 +230,13 @@ body {
       margin-left: 20px;
     }
 
+    #icon {
+      padding-top: 20px;
+      cursor: pointer;
+      height: 30px;
+      margin-left: 20px;
+    }
+
 
 /*Fin Parte Tabla*/
 
