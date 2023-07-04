@@ -18,7 +18,6 @@ const BillList = () => {
 
    // Usage function for get data from Api 
   const setData = (data) => {
-    console.log(data);
     setBills(data);
     refresh();
   };

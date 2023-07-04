@@ -234,27 +234,6 @@ body {
       margin-left: 20px;
     }
 
-    #nameSpace{
-      width: 200px;
-    }
-
-    #nameSpace input{
-      width: 200px;
-    }
-    #amountSpace {
-      width: 150px;
-    }
-  
-    #idSpace input{
-      width: 70px;
-    }
-    #idSpace {
-      width: 90px;
-    }
-
-    
-  
-
 
 /*Fin Parte Tabla*/
 
@@ -722,6 +701,13 @@ input[type="text"]:focus, textarea:focus{
 }
 .menu-side-move{
   width: 250px;
+}
+
+#icon{
+  padding-top: 20px;
+  cursor: pointer;
+  height: 30px;
+  margin-left: 20px;
 }
 
 

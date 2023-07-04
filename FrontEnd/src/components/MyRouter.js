@@ -41,21 +41,22 @@ const MyRouter = ()=> {
                     <Header/>       
                                                         
 
-                        {/*Configuración de Rutas y Paginas*/}
-                        <Routes>
-                            <Route exact path="/" element={<Home/>}/>  
-                            <Route exact path="/home" element={<Home/>}/> 
-                            <Route exact path="/crear-facturas" element={<BillMacker/>}/>
-                            <Route exact path="/lista-facturas" element={<BillList/>}/>
-                            <Route exact path="/search/:bill_ref" element={<BillSearch/>}/>
-                            <Route exact path="/area-controller" element={<AreaController/>}/>
-                            <Route exact path="/crear-pago/:id" element={<PaymentMacker/>}/>
-                            <Route exact path="/menu-reportes" element={<ReportMenu/>}/>            
-                            <Route path="*" element={<NotFound/>}/>
-                        
-                        </Routes>
-                        
-                        <div className="clearfix"></div> 
+                    {/*Configuración de Rutas y Paginas*/}
+                    <Routes>
+                        <Route exact path="/" element={<Home/>}/>  
+                        <Route exact path="/home" element={<Home/>}/> 
+                        <Route exact path="/crear-facturas" element={<BillMacker/>}/>
+                        <Route exact path="/lista-facturas" element={<BillList/>}/>
+                        <Route exact path="/search/:bill_ref" element={<BillSearch/>}/>
+                        <Route exact path="/area-controller" element={<AreaController/>}/>
+                        <Route exact path="/crear-pago/:id" element={<PaymentMacker/>}/>
+                        <Route exact path="/menu-reportes" element={<ReportMenu/>}/>
+
+                        <Route path="*" element={<NotFound/>}/>
+                    
+                    </Routes>
+                    
+                    <div className="clearfix"></div> 
 
                         
                     

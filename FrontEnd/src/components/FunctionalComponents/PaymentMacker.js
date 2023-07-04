@@ -4,6 +4,7 @@ import Slider from '../BasePageComponents/Slider';
 import { NavLink, useParams } from 'react-router-dom';
 import BtnConfirm from '../FunctionalComponents/BtnConfirm';
 import GetData from '../FunctionalComponents/GetData';
+import PaymentTable from './PaymentTable';
 
 
 // Form for Generate a PAYMENT
@@ -112,40 +113,17 @@ function PaymentMacker (){
 
     // Get BILL Data
     const setData = (data) =>{
-        console.log(data);
         setBill(data.bill);
         setTimeout(() => {
             setIsLoading(false);
         }, 400);
     }
 
-    //Generata list of payments
-    const getPayments=()=>{
+ 
 
-        try {
-            return   bill.payments.map((payment, i) => (
-                <tr>
-                    <td>
-                        <p>{payment.voucher}</p>
-                    </td>                
-                    
-                    <td>
-                        <p>₡{payment.amount}</p>
-                    </td> 
-                    
-                    <td>
-                        <p>{payment.date_created}</p>
-                    </td>
+   
 
-                </tr>
-        ));
-        } catch (error) {
-            console.error('Error:', error.message);
-        }
-
-    }
-
-     // Return the loading state and gets the API data
+    // Return the loading state and gets the API data
     if (isLoading) {
         
         return (
@@ -288,31 +266,14 @@ function PaymentMacker (){
 
 
                 {/*Show history Payments*/}    
-                {
-                    bill.payments.length != 0 &&
-                    <div>
-                        <h1 className="subheader"> Historial de Pago</h1>
-                        <table id='table'> 
-                            <thead>
-                            <tr>
-                                <th>Comprobante</th>
-                                <th>Monto</th>
-                                <th>Fecha Emisión</th>
-
-                            </tr>
-                            </thead>
+                <PaymentTable payments={bill.payments} total={bill.price} />
+                
 
 
-                            <tbody>   
-                                {getPayments()}
-                                
-                            </tbody>
-        
-                    
-                        </table>
-                    </div>
-                }    
+                
+                
                 <br/>
+
                 <br/>
                 
 

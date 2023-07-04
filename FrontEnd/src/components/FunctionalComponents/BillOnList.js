@@ -118,8 +118,10 @@ function BillOnList({billP, listChange}) {
                 <td>
                     <textarea className='descriptionCell' value={bill.description} onChange={handleDescriptionChange}/>   
                 </td>
+                
                 <a onClick={send} ><img src={saveImg} alt='save' /></a>
                 <NavLink to={`/crear-pago/${bill.id}` }> <img src={payImg} alt='pay'/> </NavLink>
+                
                
                
                 
