@@ -4,15 +4,16 @@ import BillTable from '../FunctionalComponents/BillTable';
 import GetData from '../FunctionalComponents/GetData';
 
 
-const BillList = () => {
+const BillAreaReport = () => {
 
   // Generate States for all variables
   const [bills, setBills] = useState([{
-
     area:[]
   }]);
   const [dateStart, setDateStart] = useState('');
   const [dateEnd, setDateEnd] = useState('');
+  const [areaName, setAreaName] = useState('');
+  const [areaType, setAreaType] = useState('');
   const [isLoading, setIsLoading] = useState(true);
 
 
@@ -86,23 +87,18 @@ const BillList = () => {
       <Slider title="Lista Facturas" size="slider-small" />
 
         <div className="center">
-          <h2 className="subheader"></h2>
-          <div id='date-picker'>
-              <label>Fecha Inicio</label>
-              <input type="date" id="dateStart" value={dateStart} onChange={handleDateStartChange} />
-          </div>
-          <div id='date-picker'>
-              <label>Fecha Fin</label>
-              <input type="date" value={dateEnd} onChange={handleDateEndChange} />
-          </div>
-          <div className="clearfix"></div>
+            
+            <h2 className="subheader"></h2>
+            <div className="bill-list" id="list">
+                <label>Fecha Inicio</label>
+                <input type="date" id="dateStart" value={dateStart} onChange={handleDateStartChange} />
+                <label>Fecha Fin</label>
+                <input type="date" value={dateEnd} onChange={handleDateEndChange} />
+                <div className="clearfix"></div>
+                {/*Call component BillTable generate the FullTable*/}
+                <BillTable bills={bills}  /> 
 
-          
-          <div className="bill-list" id="list">
-              {/*Call component BillTable generate the FullTable*/}
-              <BillTable bills={bills}  /> 
-
-          </div>
+            </div>
       
         </div>
 
@@ -110,4 +106,4 @@ const BillList = () => {
   );
 };
 
-export default BillList;
+export default BillAreaReport;

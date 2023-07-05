@@ -725,6 +725,13 @@ input[type="text"]:focus, textarea:focus{
   margin-right: 40px;
 }
 
+#date-picker{
+  width: 200px;
+  margin-right: 40px;
+  display: inline-block;
+  
+}
+
 
 
 

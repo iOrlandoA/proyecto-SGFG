@@ -76,7 +76,7 @@ function PaymentTable({payments, total}) {
             {
                 payments.length != 0 ?
                 <div>
-                    <h1 className="subheader"> Historial de pagos de la factura</h1>
+                    
                     <table id='table'> 
                         <thead>
                         <tr>
@@ -87,12 +87,15 @@ function PaymentTable({payments, total}) {
                         </thead>
                             
                             {generateList()}
-                        <tr>
-                            <td style={{ border: 'none' }}></td>
-                            <td style={{ border: 'none' }}></td>
-                            <td>- {totalPaid}</td>
-                            <td>= {total-totalPaid}</td>
-                        </tr>
+                        {total!=undefined &&
+                            <tr>
+                                <td style={{ border: 'none' }}></td>
+                                <td style={{ border: 'none' }}></td>
+                                <td>- {totalPaid}</td>
+                                <td>= {total-totalPaid}</td>
+                            </tr>
+                        }
+                        
                         
                     </table>
 

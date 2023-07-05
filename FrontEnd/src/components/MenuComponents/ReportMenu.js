@@ -27,7 +27,7 @@ function ReportMenu  (){
                         
                         <div className='wrapper'>
                             <div className='column'>
-                                <NavLink to='#' className="btn-white">Reporte Por Pagos</NavLink> 
+                                <NavLink to='/reporte-pagos' className="btn-white">Reporte Por Pagos</NavLink> 
                             </div>
                             <div className='column'>
                                 <NavLink to='#' className="btn-white">Reporte Por Area</NavLink> 

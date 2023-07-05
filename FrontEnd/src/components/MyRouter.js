@@ -17,6 +17,8 @@ import AreaController from "./FunctionalComponents/AreaController";
 import PaymentMacker from "./FunctionalComponents/PaymentMacker";
 import BurgerMenu from "./BasePageComponents/BurgerMenu";
 import ReportMenu from "./MenuComponents/ReportMenu";
+import PaymentReport from "./FunctionalComponents/PaymentReport";
+
 
 
 
@@ -51,6 +53,7 @@ const MyRouter = ()=> {
                         <Route exact path="/area-controller" element={<AreaController/>}/>
                         <Route exact path="/crear-pago/:id" element={<PaymentMacker/>}/>
                         <Route exact path="/menu-reportes" element={<ReportMenu/>}/>
+                        <Route exact path="/reporte-pagos" element={<PaymentReport/>}/>
 
                         <Route path="*" element={<NotFound/>}/>
                     

@@ -264,7 +264,7 @@ function PaymentMacker (){
 
 
 
-
+                <h1 className="subheader"> Historial de pagos de la factura</h1>
                 {/*Show history Payments*/}    
                 <PaymentTable payments={bill.payments} total={bill.price} />
                 
