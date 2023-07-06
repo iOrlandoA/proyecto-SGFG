@@ -18,6 +18,8 @@ import PaymentMacker from "./FunctionalComponents/PaymentMacker";
 import BurgerMenu from "./BasePageComponents/BurgerMenu";
 import ReportMenu from "./MenuComponents/ReportMenu";
 import PaymentReport from "./FunctionalComponents/PaymentReport";
+import BillAreaReport from "./FunctionalComponents/BillAreaReport";
+import AccountReport from "./FunctionalComponents/AccountReport";
 
 
 
@@ -54,6 +56,8 @@ const MyRouter = ()=> {
                         <Route exact path="/crear-pago/:id" element={<PaymentMacker/>}/>
                         <Route exact path="/menu-reportes" element={<ReportMenu/>}/>
                         <Route exact path="/reporte-pagos" element={<PaymentReport/>}/>
+                        <Route exact path="/reporte-facturas-area" element={<BillAreaReport/>}/>
+                        <Route exact path="/reporte-cuentas/:area_type" element={<AccountReport/>}/>
 
                         <Route path="*" element={<NotFound/>}/>
                     

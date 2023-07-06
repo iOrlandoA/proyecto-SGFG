@@ -64,7 +64,6 @@ function BillMacker (){
 
     // Cambia cuando se selecciona una Area Nueva
     const handleAreaChange = (event) => {
-        console.log (event.target.value);
         setBill ( prevBill => {
             return {...prevBill, area_id : event.target.value }
         } );
@@ -172,8 +171,8 @@ function BillMacker (){
     if (isLoading) {
         return (
             <div>
-            <GetData req={'/areas/visible'} setData={setData} />
-            <h1 className="subheader">Cargando...</h1>
+                <GetData req={'/areas/visible'} setData={setData} />
+                <Slider title="Cargando ..." size="slider-small" />
             </div>
         );
     }

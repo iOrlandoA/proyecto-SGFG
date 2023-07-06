@@ -19,25 +19,24 @@ function ReportMenu  (){
         
             <div className='center'>
                 <div id='content' >
-                    <h1 className='subheader'>Menu Reportes</h1>
                     
                     <div>
                     
-                    
+                        <h1 className='subheader'></h1>
                         
                         <div className='wrapper'>
                             <div className='column'>
                                 <NavLink to='/reporte-pagos' className="btn-white">Reporte Por Pagos</NavLink> 
                             </div>
                             <div className='column'>
-                                <NavLink to='#' className="btn-white">Reporte Por Area</NavLink> 
+                                <NavLink to='/reporte-facturas-area' className="btn-white">Reporte Por Area</NavLink> 
                             </div>
 
                             <div className='column'>
-                                <NavLink to='#' className="btn-white">Cuentas Por Cobrar</NavLink> 
+                                <NavLink to='/reporte-cuentas/0' className="btn-white">Cuentas Por Cobrar</NavLink> 
                             </div>
                             <div className='column'>
-                                <NavLink to='#' className="btn-white">Cuentas Por Pagar</NavLink> 
+                                <NavLink to='/reporte-cuentas/1' className="btn-white">Cuentas Por Pagar</NavLink> 
                             </div>
 
                         </div>

@@ -68,7 +68,7 @@ const PaymentReport = () => {
     return (
       <div>
         <GetData req={`/payments?start_date=${dateStart}&end_date=${dateEnd}`} setData={setData} />
-        <h1 className="subheader">Cargando...</h1>
+        <Slider title="Cargando ..." size="slider-small" />
       </div>
     );
   }

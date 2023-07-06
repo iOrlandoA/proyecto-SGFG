@@ -131,7 +131,7 @@ function AreaController (){
         return (
             <div>
             <GetData req={'/areas'} setData={setAreasFun} />
-            <h1 className="subheader">Cargando...</h1>
+            <Slider title="Cargando ..." size="slider-small" />
             </div>
         );
     }

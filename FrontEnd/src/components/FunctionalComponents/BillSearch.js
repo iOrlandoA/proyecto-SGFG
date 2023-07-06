@@ -55,7 +55,7 @@ function BillSearch  ()  {
         return (
         <div>
             <GetData req={`/bills?bill_ref=${billRef}`} setData={setData} />
-            <h1 className="subheader">Cargando...</h1>
+            <Slider title="Cargando ..." size="slider-small" />
         </div>
         );
     }

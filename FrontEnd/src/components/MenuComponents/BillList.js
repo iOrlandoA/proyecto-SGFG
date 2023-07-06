@@ -70,7 +70,7 @@ const BillList = () => {
     return (
       <div>
         <GetData req={`/bills?start_date=${dateStart}&end_date=${dateEnd}`} setData={setData} />
-        <h1 className="subheader">Cargando...</h1>
+        <Slider title="Cargando ..." size="slider-small" />
       </div>
     );
   }

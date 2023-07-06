@@ -12,6 +12,8 @@ function PaymentOnList({paymentP, listChange}) {
    
     const [edited, setEdited]= useState(false);
     const [isLoading, setIsLoading]= useState(true);
+    const [validationTest, setValidationTest]= useState([]);
+    const [goSend, setGoSend]= useState(false);
 
     // Cambia cuando se cambia el Precio
     const handleAmountChange = (event) => {
@@ -44,10 +46,31 @@ function PaymentOnList({paymentP, listChange}) {
 
     // Send to Payment Table the Payment Edited to confirm the changes
     const send =()=>{
-        setEdited(false);
-        if(edited){
+        setValidationTest([]);
+        setGoSend(false);
+        if ( payment.amount === '' || payment.voucher === '' || payment.dateCreated === "") 
+        {
+            if(payment.amount === ''){
+                
+                setValidationTest((prevState) => [...prevState, { type: "amount", msg: "Monto vacío" }]);
+
+            } 
+            if(payment.voucher === ''){
+                
+                setValidationTest((prevState) => [...prevState, { type: "voucher", msg: "Numero Comprobante Vacío o Invalido" }]);
+            } 
+            if(payment.date_created === ''){
+              
+                setValidationTest((prevState) => [...prevState, { type: "date_created", msg: "Fecha Inicio Vacía" }]);
+            } 
+        }else{
+            setGoSend(true);            
+        }   
+        
+        if(goSend){
             listChange(payment);
         }
+        setEdited(false);
 
     }
     

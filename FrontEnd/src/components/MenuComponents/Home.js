@@ -129,7 +129,7 @@ function Home  (){
         return (
             <div>
             <GetData req={`/bills/sumbills_by_type?start_date=${dateStart}&end_date=${dateEnd}`} setData={setData} />
-            <h1 className="subheader">Cargando...</h1>
+            <Slider title="Cargando ..." size="slider-small" />
             </div>
         );
     }
