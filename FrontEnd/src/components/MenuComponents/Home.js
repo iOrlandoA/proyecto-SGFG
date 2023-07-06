@@ -114,7 +114,6 @@ function Home  (){
 
      // Trae los datos de las Areas
      const setData = (data) =>{
-        console.log(data);
         setMoneyIn(data.ingreso_price);
         setMoneyOut(data.gasto_price);
         outcomeCalc();

@@ -47,6 +47,7 @@ class BtnConfirm extends Component{
             });
             
         }
+        
 
         // Use the Cleaning Function
         this.props.noSend();
@@ -66,10 +67,26 @@ class BtnConfirm extends Component{
        );
     };
 
+   
+        
+    
+
     // SHOWS BUTTON CONFIRM AND CANCEL 
     render(){
         return(
+
             <div id='confirm-button' >
+                { this.props.typeConfirm === "refresh" &&
+                    axios.put(`${this.apiUrl}/${this.props.objectType}/${this.props.id}`, this.props.object,{
+                        headers: {
+                            'Accept': 'application/json' 
+                        }
+                    })
+                    .then()
+                    .catch((err) => {
+                        console.log(err);
+                    })
+                }
                 
                 <h3>Confirmación</h3>
                 <p>¿Estás seguro de que deseas realizar esta acción?</p>

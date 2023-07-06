@@ -18,6 +18,16 @@ const AccountReport = () => {
     const [dateEnd, setDateEnd] = useState('');
     const [isLoading, setIsLoading] = useState(true);
     const [areaType, setAreaType]= useState('');
+    const [msg, setMsg]= useState('');
+
+
+   const setSendMsg=()=>{
+        if(params.area_type == 0){
+            setMsg('Total por Cobrar');
+        } else if(params.area_type == 1){
+            setMsg('Total por Pagar');
+        }
+    }
 
     // Usage function for get data from Api 
     const setData = (data) => {
@@ -62,6 +72,7 @@ const AccountReport = () => {
 
     //Use Effect start the Date with the function
     useEffect(() => {
+        setSendMsg();
         setIsLoading(true);
         getDate();
         setAreaType(params.area_type);
@@ -107,7 +118,7 @@ const AccountReport = () => {
             
             <div className="bill-list" id="list">
                 {/*Call component BillTable generate the FullTable*/}
-                <BillTable bills={bills}  /> 
+                <BillTable bills={bills} msg={msg} /> 
 
             </div>
         

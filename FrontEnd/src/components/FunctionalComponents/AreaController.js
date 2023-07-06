@@ -95,7 +95,9 @@ function AreaController (){
                         return {...prevArea, visible : false }
                     } );
                     setGoUpdate(true);
-                }else{setGoDelete(true);}
+                }else{
+                    setGoDelete(true);
+                }
                 
                 
             }           

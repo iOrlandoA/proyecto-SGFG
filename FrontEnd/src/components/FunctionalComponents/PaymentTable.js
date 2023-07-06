@@ -2,19 +2,20 @@ import React, {useState, useEffect} from 'react';
 import BtnConfirm from './BtnConfirm';
 import PaymentOnList from './PaymentOnList';
 
-function PaymentTable({payments, total}) {
+function PaymentTable({payments, total, loading, bill}) {
     const [paymentEdited, setPaymentEdited]= useState({});
     const [goUpdate, setGoUpdate]= useState(false);
     const [totalPaid, setTotalPaid] = useState(0);
+    const [billUpdated, setBillUpdated]= useState({
+        full_paid:false
+    });
     
     
 
     // Get BILL Data
     const listChange = (data) =>{
-        console.log(data);
         setPaymentEdited(data);
         setGoUpdate(true);
-       
     }
 
 
@@ -24,6 +25,8 @@ function PaymentTable({payments, total}) {
         setPaymentEdited({});
         setTotalPaid(0);
         sumOfPaid();
+        loading(true);
+        
     }  
 
     //Generate list of payments
@@ -41,10 +44,16 @@ function PaymentTable({payments, total}) {
     // Sum all payments of the bill
     const sumOfPaid=()=>{
         try {
-            const total = payments.reduce((accumulator, payment) => {
+            const totalP = payments.reduce((accumulator, payment) => {
                 return accumulator + payment.amount;
                 }, 0);
-            setTotalPaid(total);
+            setTotalPaid(totalP);
+
+            if(total === totalP){
+                updateBill(true);
+            }else if(total <= totalP){
+                updateBill(false);
+            }
         } catch (error) {
         }
         
@@ -52,9 +61,41 @@ function PaymentTable({payments, total}) {
 
     //Mounting this component 
     useEffect( ()=>{
+        
         sumOfPaid();
         
+        
     },[]);
+
+    useEffect(()=>{
+        
+        if(billUpdated.id !== undefined){
+            console.log(billUpdated);
+            goUpdateBill();
+        }
+        
+    },[billUpdated]);
+
+    const updateBill =(e)=>{
+        setBillUpdated(bill);
+        setBillUpdated ( prev => {
+            return {...prev, full_paid : e }
+        } ); 
+    } 
+    // No funciona
+    const goUpdateBill=()=>{
+        return(
+            
+            <BtnConfirm
+                object={{billUpdated}}
+                objectType="bills"
+                typeConfirm="refresh"
+                noSend= {noSend} 
+                id = {billUpdated.id}     
+            /> 
+           
+        );
+    }
     
 
 
@@ -71,6 +112,7 @@ function PaymentTable({payments, total}) {
                     id = {paymentEdited.id}     
                 />
             }
+            
 
             {/*Show history Payments*/}    
             {
