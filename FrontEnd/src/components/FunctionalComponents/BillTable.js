@@ -35,7 +35,7 @@ const BillTable = ({ bills, msg}) => {
   const sumOfBills=()=>{
     try {
         const total = bills.reduce((accumulator, bill) => {
-            return accumulator + bill.price;
+            return accumulator + bill.remaining_balance;
         }, 0);
         setTotalBills(total);
     } catch (error) {
@@ -74,6 +74,7 @@ const BillTable = ({ bills, msg}) => {
             <th>Fecha Expiración</th>
             <th>Descripción</th>
             <th>Monto Total</th>
+            <th>Total por Pagar</th>
           </tr>
         </thead>
 
@@ -82,6 +83,7 @@ const BillTable = ({ bills, msg}) => {
 
         {msg != undefined &&
           <tr>
+              <td style={{ border: 'none' }}></td>
               <td style={{ border: 'none' }}></td>
               <td style={{ border: 'none' }}></td>
               <td style={{ border: 'none' }}></td>
