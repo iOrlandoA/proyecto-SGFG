@@ -1,5 +1,7 @@
 import React,{Component} from "react";
 
+
+// Page Not Found Component
 const NotFound = () =>{
     return(
         <section id="content">

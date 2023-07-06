@@ -1,15 +1,13 @@
 import React, { useState, useEffect } from 'react';
 import Slider from '../BasePageComponents/Slider';
-import BillTable from '../FunctionalComponents/BillTable';
+import PaymentTable from './PaymentTable';
 import GetData from '../FunctionalComponents/GetData';
 
 
-const BillList = () => {
+const PaymentReport = () => {
 
   // Generate States for all variables
-  const [bills, setBills] = useState([{
-
-    area:[]
+  const [payments, setPayments] = useState([{
   }]);
   const [dateStart, setDateStart] = useState('');
   const [dateEnd, setDateEnd] = useState('');
@@ -18,7 +16,7 @@ const BillList = () => {
 
    // Usage function for get data from Api 
   const setData = (data) => {
-    setBills(data);
+    setPayments(data);
     refresh();
   };
 
@@ -69,7 +67,7 @@ const BillList = () => {
   if (isLoading) {
     return (
       <div>
-        <GetData req={`/bills?start_date=${dateStart}&end_date=${dateEnd}`} setData={setData} />
+        <GetData req={`/payments?start_date=${dateStart}&end_date=${dateEnd}`} setData={setData} />
         <Slider title="Cargando ..." size="slider-small" />
       </div>
     );
@@ -80,29 +78,36 @@ const BillList = () => {
   
 
 
-  // Return the List of Bills
+  // Return the List of Payments
   return (
     <div>
-      <Slider title="Lista Facturas" size="slider-small" />
+      <Slider title="Reporte de Pagos" size="slider-small" />
 
         <div className="center">
-          <h2 className="subheader"></h2>
-          <div id='date-picker'>
-              <label>Fecha Inicio</label>
-              <input type="date" id="dateStart" value={dateStart} onChange={handleDateStartChange} />
-          </div>
-          <div id='date-picker'>
-              <label>Fecha Fin</label>
-              <input type="date" value={dateEnd} onChange={handleDateEndChange} />
-          </div>
-          <div className="clearfix"></div>
+            
+            <h2 className="subheader"></h2>
+            <div id='date-picker'>
+                <label>Fecha Inicio</label>
+                <input type="date" id="dateStart" value={dateStart} onChange={handleDateStartChange} />
+            </div>
+            <div id='date-picker'>
+                <label>Fecha Fin</label>
+                <input type="date" value={dateEnd} onChange={handleDateEndChange} />
+            </div>
+            <div className="clearfix"></div>
+            
 
-          
-          <div className="bill-list" id="list">
-              {/*Call component BillTable generate the FullTable*/}
-              <BillTable bills={bills}  /> 
+            <div className="bill-list" id="list">
 
-          </div>
+                
+
+                
+                {/*Call component Payment Table generate the FullTable*/}
+                <PaymentTable payments={payments}  /> 
+                <br/>
+                <br/>
+
+            </div>
       
         </div>
 
@@ -110,4 +115,4 @@ const BillList = () => {
   );
 };
 
-export default BillList;
+export default PaymentReport;

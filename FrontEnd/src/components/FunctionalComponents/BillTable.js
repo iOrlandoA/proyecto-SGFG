@@ -1,64 +1,70 @@
-import React, {Component} from 'react';
+import React, { useEffect, useState } from 'react';
+import BtnConfirm from './BtnConfirm';
 import BillOnList from '../FunctionalComponents/BillOnList';
-// Componente Base en el cual Cargar HTML 
-class BillTable extends Component{
 
+// Generate the Table of Bills CAN Recibe multiple or only one bills
+const BillTable = ({ bills}) => {
+  //Generals Objects
+  const [billEdited, setBillEdited]= useState();
+  const [goUpdate, setGoUpdate]= useState(false);
 
-    generateList = ()  =>{
-        
-        try {
-            return this.props.bills.map((bill, i) => {
-                return (
-                    //Llama al componente que genera cada fila (Manda Key y Factura)
-                    <BillOnList 
-                        key= {i}
-                        bill= {bill}
-                        listChange= {this.listChange}
-                    />
-                );
-            });
-        } catch (error) {
-            console.error('Error:', error.message);
-        }
+  // Recibe changes from BillOnList
+  const listChange = (data) => {
+    setBillEdited(data);
+    setGoUpdate(true);
+  };
+
+  // Generate the elements on table with BillOnList
+  const generateList = () => {
+    try {
+      return bills.map((bill, i) => (
+        <BillOnList key={i} billP={bill} listChange={listChange} />
+      ));
+    } catch (error) {
+      console.error('Error:', error.message);
     }
-
-    listChange= (datos) =>{ //Mandar Factura en Put
-        console.log(datos);
-    }
-
-    componentDidMount= ()=>{
-
-    }
-
+  };
+  // CLEAN data and FINISH Send WorkFlow
+  const noSend=()=>{
+    setGoUpdate(false);
+    setBillEdited({});
     
-    render(){
-        return(
-            
-            <div id='list'>
-                {/*Parte de Titulos de la Tabla*/}      
-                <table id="table" >
-                <thead>
-                    <tr>
-                        <th>ID Factura</th>
-                        <th>Comprobante</th>
-                        <th>Nombre </th>
-                        <th>Precio</th>
-                        <th>Area </th>
-                        <th>Fecha Creación</th>
-                        <th>Fecha Expiración </th>
-                        <th>Descripción</th>
-                    </tr>
-                </thead>
+  }
 
-                {/*Aqui se llama al Metodo que Genera la Lista*/}
-                {this.generateList()}
 
-                </table>
+  return (
+    <div id='list'>
+      {/*Get the Button to CONFIRM CHANGES*/}
+      {
+        goUpdate && 
+          <BtnConfirm
+            object={billEdited}
+            objectType="bills"
+            typeConfirm="update"
+            origin="noSend" 
+            noSend= {noSend} 
+            id = {billEdited.id}     
+          />
+      }
+      {/*Show HEAD Of Table*/}
+      <table id='table'> 
+        <thead>
+          <tr>
+            <th>Numero Factura</th>
+            <th>Proveedor/Cliente</th>
+            <th>Monto Total</th>
+            <th>Area</th>
+            <th>Fecha Creación</th>
+            <th>Fecha Expiración</th>
+            <th>Descripción</th>
+          </tr>
+        </thead>
 
-            </div>
-            
+        {generateList()}
+      </table>
+    {/*End OF Div*/}
+    </div> 
+  );
+};
 
-        );
-    }
-}
-export default BillTable;
+export default BillTable; 
